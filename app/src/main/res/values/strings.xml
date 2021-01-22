@@ -1,0 +1,273 @@
+<resources>
+    <string name="app_name">Gatyatmak Jyotish</string>
+    <string name="app_name_header">Gatyatmak Jyotish Your Guide To The Future</string>
+    <string name="lorem_ipsum">You are a sensitive and emotional person. The hard knocks of this world have more effects on you than they have on most other people, and you lose some of the enjoyment of life in consequence. What other people say and think of you is taken by you to heart. Thus, there are a certain number of things which cause you unhappiness which, after all, are not worth troubling about.Your manner is quiet, as a rule, and this quality gives you the appearance of being strong and determined in the eyes of your fellow-men and women. It enables you to get your own way when you want it.You do not say as much as you think and while you are thinking, you are reasoning. It follows that your judgement is worth having and people will flock to you for advice.You have several excellent qualities. You are highly sympathetic, which makes you a good friend. You are loyal and patriotic and are thus a first class citizen. You are, or would be a most lovable parent. You are, or would be, everything that your partner could desire. Clearly, the good qualities of yours far outweigh the others.</string>
+    <string name="drawer_open">Drawer Open</string>
+    <string name="sign_up_activity_title">Sign Up</string>
+
+    <string name="forgot">please enter your email to  search for your account.</string>
+
+    <string name="find">Write Your Email</string>
+
+    <string name="notification">Notification </string>
+    <string name="changefontsize">Change Font Size</string>
+    <string name="fontsize">Font Size</string>
+    <string name="usedevicefontsize">Use device font size</string>
+    <string name="tiny">Tiny</string>
+    <string name="Medium">Medium</string>
+    <string name="Large">Large</string>
+    <string name="ExtraLarge">Extra Large</string>
+    <string name="Huge">Huge</string>
+    <string name="points">With downloading this app, user will get 50 gatyatmak points.You will get 20-20 gatyatmak points sharing this app with your contacts. After sharing by you and downloading by a user, you will get 50 more gatyatmak points. You will get 100 gatyatmak points too by rating this app. One point will be equal to one Indian rupee. You will use these points in purchasing our books and availing our services upto 25% to 50%.</string>
+    <string name="drawer_close">Drawer Closed</string>
+    <string name="interest">Interested in trying one? Use the form below to get in touch.</string>
+
+    <string name="name">Name</string>
+    <string name="dob">Date of Birth</string>
+    <string name="tob">Time of Birth</string>
+    <string name="pob">Place of Birth</string>
+
+
+    <string name="pob_district">Place of Birth/District</string>
+    <string name="address">Address</string>
+    <string name="location">Current Location</string>
+    <string name="number">Mobile Number</string>
+    <string name="cpassword">Confirm Password </string>
+    <string name="promocode">Enter Promocode (OPTIONAL)</string>
+    <string name="settings">Settings</string>
+    <string name="changepassword">Change Password</string>
+    <string name="changetheme">Change Theme</string>
+    <string name="currentpassword">Current Password</string>
+    <string name="newpassword">New Password</string>
+    <string name="retypenewpassword">Re-type New Password </string>
+    <string name="save">Save</string>
+    <string name="email">Email Address</string>
+    <string name="login">Login</string>
+    <string name="signup">No account?Register here</string>
+    <string name="year">Yearly forecast</string>
+
+
+    <string name="date">Daily forecast</string>
+    <string name="UsersProfile">Users Profile </string>
+    <string name="changelanguage">Change Language </string>
+    <string name="Earnpoints">Earn Points</string>
+    <string name="OtherServices">Other Services</string>
+    <string name="PaymentDetails">Payment Details</string>
+    <string name="Blog">Blog</string>
+    <string name="Contactus">Contact Us</string>
+    <string name="aboutus">About us</string>
+    <string name="rateUs">Rate us</string>
+    <string name="logout">Logout</string>
+    <string name="thanksmessage">Thankyou for Login</string>
+    <string name="services">Services</string>
+    <string name="RidhiManchanda">Hi, Ridhi Manchanda</string>
+    <string name="horoscopemaking">Horoscope Making</string>
+    <string name="horoscopematching">Horoscope Matching</string>
+    <string name="consultation">Consultation</string>
+    <string name="otherservices">Other Services </string>
+    <string name="cart">Cart</string>
+    <string name="horoscope_matching">Horoscope Matching Details</string>
+    <string name="blog1">Blog1 </string>
+    <string name="blog2">Blog2</string>
+    <string name="blog3">Blog3 </string>
+    <string name="blog4">Blog4 </string>
+    <string name="OK">OK</string>
+    <string name="REDEEMPOINT">REDEEM POINT</string>
+    <string name="Done">Done</string>
+    <string name="team">Our Team</string>
+    <string name="shareApp">Share</string>
+    <string name="subscription">Subscription </string>
+    <string name="pointsforliving">10 key points</string>
+    <string name="our_mission">Our mission</string>
+    <string name="socialmenu">Follow these pages</string>
+    <string name="title_book1">Book-Falit Jyothish:Kitna sach Kitna Jhooth</string>
+    <string name="title_book2">Book-Gatyakmak Jyothish:Grahon ka Prabhaw</string>
+    <string name="title_service1">Gatyatmak Horoscope</string>
+    <string name="title_service2">Horoscope Matching</string>
+
+    <string name="title_service3">Jyothish Prediction</string>
+    <string name="title_service4">Astrology Remedies</string>
+
+    <!--<string name="title_service1">English Horoscope-7 pages</string>-->
+    <!--<string name="title_service2">Hindi Horoscope-11 pages</string>-->
+    <string name="title_service5">Hindi Astrology eBooks - Falit Jyotish : Kitna Sach Kitna Jhuth</string>
+    <string name="title_service6">Hindi Astrology eBooks - Gatyatmak Dasha Paddhati : Grahon Ka Prabhav</string>
+    <string name="title_service7">Hindi Astrology eBooks - Gatyatmak Jharokhe se jyotish</string>
+    <string name="proceed">Proceed</string>
+    <string name="purchasenow">SERVICE AVAILABLE</string>
+    <string name="paynow">PAY NOW</string>
+    <string name="edit">EDIT</string>
+    <string name="your">Your Cart is empty!Add items to it now</string>
+    <string name="Rate">Rate this app</string>
+    <string name="share">Share this Application</string>
+    <string name="refer">Refer and Earn</string>
+    <string name="horoscope">Horoscope</string>
+    <string name="dailyforecast">Daily forecast</string>
+    <string name="yearlyforecast">Yearly forecast</string>
+    <string name="consulation">Consulation</string>
+    <string name="phone">phone</string>
+    <string name="payment">SELECT A PAYMENT METHOD</string>
+    <string name="health"> dropdown1E - health, personality</string>
+    <string name="wealth">dropdown2E - wealth, family, credit</string>
+
+
+    <string name="brother">dropdown3E - brother-sister, collegue</string>
+    <string name="mother">dropdown4E - mother, belongings</string>
+
+    <string name="education">dropdown5E - education, progeny</string>
+    <string name="illness">dropdown6E - illness-loan-enemy</string>
+    <string name="love">dropdown7E - love, domestic-matters</string>
+    <string name="routine">dropdown8E - routine,  life-style</string>
+    <string name="luck">dropdown9E - luck, religious-activity</string>
+    <string name="father">dropdown10E - father,career, society</string>
+    <string name="profit">dropdown11E - profit, goal, aimbition</string>
+    <string name="expense">dropdown12E - expense, foreign-trip</string>
+    <string name="points_to_know_heading">Gatyatmak Jyotish has introduced 10 points to adjust with the power of time.</string>
+    <string name="useofapp">Use of App</string>
+    <string name="done">Done</string>
+    <string name="marketing">Be partner in marketing of this app</string>
+
+    <string name="app">With downloading this app, user will get 50 gatyatmak points. You will get 20-20 gatyatmak points sharing this app with your contacts. After sharing by you and downloading by a user, you will get 50 more gatyatmak points. You will get 100 gatyatmak points too by rating this app. One point will be equal to one Indian rupee. You will use these points in purchasing our books and availing our services upto 25% to 50%</string>
+    <string name="hello_blank_fragment">error is here</string>
+
+    <string name="remedy">Remedy</string>
+
+    <string name="publish">Publications </string>
+    <string name="titlelocationpermission">title_location_permission</string>
+    <string name="textlocationpermission">text_location_permission</string>
+
+    <string name="astro">1. Hindi Astrology Books – Our hindi Books based on Gatyatmak Jyotish research written by Mr. Vidya Sagar Mahtha and Mrs. Sangita Puri is available at very reasonable price.</string>
+    <string name="astro1">2. Hindi Astrology eBooks – Our Hindi eBooks based on Gatyatmak Jyotish research written by Mr. Vidya Sagar Mahtha and Mrs. Sangita Puri is available at very reasonable prices.</string>
+    <string name="pubb1"><![CDATA[(a).<b>Falit Jyotish: Kitna Sach Kitna Jhuth</b> - The book is written by  <b>Mr. Vidya Sagar Mahtha</b>, the father of ‘Gatyatmak Jyotish’. In this book, he has expressed deep concer over superstitions and illusions in Indian astrology and also suggested the ways for eradication of such practices. \u20B9 400/-]]></string>
+
+    <string name="pubb2"><![CDATA[(b).<b>Gatyatmak Dasha Paddhati: Grahon Ka Prabhav</b> – Written by Mrs. Sangita Puri, this book details the research and foundation ofGatyatmakJyotish, through which accurate predictions are possible. \u20B9 400/-  ]]>    </string>
+
+
+    <string name="service_title"> You can get your Horoscope in English by providing us your date, time and place of birth. Mr. VidyaSagarMahtha, the father of ‘GatyatmakJyotish’, has formulated calculations which have made it possible to sketch authentic life-graphs showing ups/downs and negative/positive circumstances of any individual’s life. Through software-generated life-graphs with proper descriptions, we are able to provide our predictions with high level of accuracy. \u20B9 800/-</string>
+
+    <string name="service1">1. Gatyatmak Horoscope – You can get your Horoscope in English by providing us your date, time and place of birth. Mr. VidyaSagarMahtha, the father of ‘GatyatmakJyotish’, has formulated calculations which have made it possible to sketch authentic life-graphs showing ups/downs and negative/positive circumstances of any individual’s life. Through software-generated life-graphs with proper descriptions, we are able to provide our predictions with high level of accuracy. \u20B9 800</string>
+
+
+    <string name="service2">2. Horoscope Matching – Matching horoscopes before marriage is an old tradition in India.However we do not follow the Indian astrology system which only correlates Moon andMars in their horoscopes. Our system correlates all planets with one another to detect and take precautions against any adversity in future. We provide complete information regarding the horoscope matching and also provide a clear picture about whether the match is good or not. Moreover, we also offer proper advice to overcome the adversities, if possible. \u20B9 400</string>
+    <string name="service3">3. Jyotish Prediction – GatyatmakJyotish is also famous for offering trustworthy Jyotish Prediction to the clients. We offer different types of predictions which have become possible due to our consistent tedious research work for over 50 years. On topics ranging across education, career, marriage, and health, we provide accurate predictions and consultations.\u20B9 400</string>
+
+    <!-- <string-array name="related">
+         <item>Health</item>
+         <item>Life</item>
+         <item>Property Purchase</item>
+         <item>Finance</item>
+         <item>Marriage </item>
+     </string-array>-->
+    <string name="service4">4. Astrological Remedies – We also provide Astrological Remedies to help you extract maximum benefits from benevolent planets andminimize bad effects of malefic planets. For example, if Moon is one’s unfavourable planet, one should sow tiny healthy plants at home, donate money or objects to orphanage and try to use white or orange colours as much as possible to escape or minimize its bad effects. Besides this, one can get a silver ring or locket forged during an auspicious two-hour period on a Full Moon day and wear it. For other planets, we offer consultation of similar procedures which can be followed. \u20B9 400</string>
+    <string name="service5">(a). Falit Jyotish : Kitna Sach Kitna Jhuth – This ebook is written by Mr. Vidya Sagar Mahtha, the father of ‘GatyatmakJyotish’. In this book, he has expressed deep concern over superstitions and illusions in Indian astrology andalso suggested the ways for eradication of such practices. \u20B9 200/-</string>
+    <string name="service6">(b). Gatyatmak Dasha Paddhati : Grahon Ka Prabhav – Written by Mrs. Sangita Puri, this ebook details the research and foundation of Gatyatmak Jyotish, through which accurate predictions are possible. \u20B9 200/-</string>
+    <string name="service7">(c). Gatyatmak Jharokhe se jyotish – The ebook \'Gatyatmak Jharokhe Se Jyotish\' is written by Mrs. Sangita Puri in which dynamic form of astrology has been described well to make common people understand easily. \u20B9 200/-</string>
+
+    <string name="daily_cart">After receiving this service, the calendar of Daily result will be activated. then you will understand which day will remain good, bad or important for you for a whole year from today.</string>
+    <!--<string name="service1">1. a English horoscope – 7 pages </string>-->
+    <!--<string name="service2">b Hindi horoscope - 15 pages</string>-->
+    <string name="yearly_cart">After receiving this service, the annual forecast will be active for a full year from today. Then you will be able to understand the position about your health, wealth, career, children, property, family life and all other matters of life of the whole year.</string>
+    <string name="welcome_text">Welcome To Gatyakmak Jyotish</string>
+    <string name="select">Please Select Your Language</string>
+    <string name="ok">OK</string>
+    <string name="english">English</string>
+    <string name="hindi">Hindi</string>
+    <string name="enter_detail">Enter Details</string>
+    <string name="password">Password</string>
+    <string name="no_response">No Response from server</string>
+    <string name="subject">Subject</string>
+    <string name="message">Message</string>
+    <string name="submit">Submit</string>
+    <string name="total">Total</string>
+    <string name="msg_token_fmt">format</string>
+    <string name="select_language">Please Select Your Language</string>
+    <string name="loading">Loading...</string>
+    <string name="gatyatmak_ponits_heading">Gatyatmak Points</string>
+    <string name="gatyatmak_points">If Someone downloads the app using your promo-code, you will get an additional 40 Gatyatmak points. 1 Gatyatmak point will be equal to 1 Rupee. You can avail discount of up to 50% with these points in purchasing our books and availing our services.</string>
+    <string name="share_app_heading">Share App</string>
+    <string name="share_app">I recommend you this application, download this for free &amp; accurate time-bound day-to-day and yearly forecast for different aspects of your life by Gatyatmak Jyotish, a new branch in Astrology. Other Astrological Services is also available here.</string>
+    <string name="no_data">Today will be a normal day,there should not be any feeling of special happiness or sorrow.</string>
+    <string-array name="about">
+        <item>Gatyatmak Jyotish (Dynamic Astrology) was started as a new branch of astrology by Mr. Vidya Sagar Mahtha in the early 1970s. While studying astronomy in college, Mr. Mahtha developed a keen interest in the field of astrology. Discarding the traditional forms of astrology as bunkum, he used his scholarship in astronomy to create a scientific base for astrology. He won a number of astrological competitions, espousing his theories to the wider astrology world while criticizing the lack of scientific base to various forms of traditional astrology. His whole life has been a journey to make this an exact science and bring objectivity to this field. He has been awarded with numerous titles like Jyotish-Vachaspati, Jyotish-Ratna and Jyotish-Manishi across various forums.
+        </item>
+        <item>His daughter, Sangita Puri, who has followed him into this field, has also published numerous articles in the past three decades. She has been widely covered in astrological journals like Babaji and JyotishDham. She also authored a book, Gatyatmak Dasha Paddhati, which was received warmly in the larger astrological world and saw two editions published in successive years. Gatyatmak Jyotish has gotten stronger with time and the number of patrons who have returned for repeat consultations are a testament to that.
+        </item>
+
+
+
+    </string-array>
+    <string name="resetPassword">Reset Password</string>
+    <string name="enterOTP">Enter the OTP provided in the email</string>
+    <string name="getOTP">Get OTP</string>
+    <string-array name="subscription">
+        <item>Daily Forcast - You will continually be shown your forecast for 3 days without any fee . In case If you wish to see your daily forecast for whole year at a time, you\'ll have to pay for our annual subscription for daily forecast \u20B9 400 Subscribe For Daily</item>
+        <item>You can get offers up to 50% of the value on the basis of Gatyatmak points in your account. Get Gatyatmak Points .</item>
+
+        <item>Yearly Forecast - Every time, You will be able to see your 3 forecasts for every aspects of your life, health, weaalth, career etc. In case If you wish to see about all matters for whole year at a time, you\'ll have to pay for our annual subscription for annual forecast \u20B9 400 Subscribe For Yearly</item>
+
+        <item>You can get offers up to 50% of the value on the basis of Gatyatmak points in your account. Get Gatyatmak Points.</item>
+
+
+    </string-array>
+    <string-array name="ourteam">
+        <item>
+            It has taken years of incessant research, led by our founder, Mr. Vidya Sagar Mahtha, to bring this new theory into existence. He started observing the flaws in the subject of astrology when he was only 24 years young, and to comprehend the existing rules of astrology, he went deeply through all the books and epics of those times. His children, Mrs. Sangita Puri, Mr. Amar Jyoti, Mrs. Shalini Khanna and Mr. Ashesh Kumar have continued further research into the field aided by their father. Here\’s the team in further detail –
+        </item>
+        <item>‘JyotishVachaspati’, ‘Jyotish-Ratna’, ‘Jyotish-Manishi’ ,’GoldMedalist’ , First prize winner in All India Astrology Competition, discoverer of the theory of kinetic and potential energy of planets and the theory of drawing life-graphs showing ups/downs and negative/positive periods regarding health, wealth, education, conjugal life, social, political position, establishment, property and what not, Writer of the monthlies like Bhartiya-Jyotish, Jyotish- Bodh, Jyotish-Martand, Jyotish-Sagar and various books .
+        </item>
+        <item>A specialist in Gatyatmak Jyotish, she blogs regularly on the topic. She has also published a book laying out Gatyatmak Jyotish in a lucid style. She was selected one among 100 women achievers in 2016 by the Union Minister of Women and Child Development, Mrs. Menaka Gandhi. In addition, she also had the privilege of being invited by the Hon. President Mr. Pranab Mukherjee for lunch on 22nd January, 2016 on the occasion of the first anniversary the Prime Minister’s ambitious plan ‘Betibachao, BetiPadhao’. The governor of Jharkhand, Mrs. Dropadi Murmu also honoured her with ‘Aparajita Award’ organized by the newspaper ‘PrabhatKhabar’.
+        </item>
+        <item>Specialist in GatyatmakJyotish, a minute observer providing life-graphs showing ups/downs and negative/positive circumstances of whole life along with proper description, responsible for GatyatmakJyotish operations in Delhi &amp; NCR.
+        </item>
+        <item>Specialist in GatyatmakJyotish and Dainik Hindustan Astrological Counselor in Dhanbad. She writes for some dailies &amp; monthlies making important predictions on and off.
+        </item>
+        <item>Specialist in GatyatmakJyotish. He manages the social media presence for GatyatmakJyotish.
+    </item>
+    </string-array>
+    <string-array name="team_name">
+        <item>Mr. Vidya Sagar Mahtha</item>
+        <item>Sangita Puri</item>
+        <item>Amar Jyoti</item>
+        <item>Shalini Khanna</item>
+        <item>Ashesh Kumar</item>
+        <item></item>
+    </string-array>
+    <string-array name="living">
+        <item>1. Very few people are such as their most of the planets are strong or most parts of life is pleasant.</item>
+        <item>2. Very few people are such as their most of the planets are weak and almost major span of life is painful considering every aspect.</item>
+        <item>3. Your good and bad times keep going on as per the life graph based on your birth time planetary movements. So just don\'t worry about it and do your work properly.</item>
+        <item>4. Search for the work of your own interest for your livelihood because you can make your own recognition to a great extent by the work of your hobby only.</item>
+        <item>5. A person doing work doesn\'t get proper success during his/her bad times but experience goes on increasing by which there becomes chances of his/her being success.</item>
+        <item>6. People who get success more than their expectations during their good times often become careless due to which the probability of their getting failures increases in future.</item>
+        <item>7. If good times come in the beginning then utilise your power properly, do work of welfare, forthcoming bad time doesn\'t create any big problem such a way.</item>
+        <item>8. If good time comes first then never misutilise your power because your further bad time may trouble you a lot.</item>
+        <item>9. If bad times come first in the beginning then have patience and do your work properly. Time gets changed anytime and you get good results of your good actions done previously.</item>
+        <item>10. If bad time comes in life in the beginning then don\'t stop doing work by losing patience because if you don\'t work, you will not be able to get anything in your good times because of your inactive tendencies.
+    </item>
+    </string-array>
+    <string-array name="ourmission">
+        <item>It has long been recognized that other planets cast an effect on all living and non-living things on Earth. Our mission is to share this idea with the masses by making them understand the various kinds of effects these planets have on our day to day life, so that individuals have the awareness to pick the right choices at all times. In this way, we hope to fulfil our desire to take astrology to it\'s desired position among all the other great classical subjects of our times.</item>
+    </string-array>
+    <string-array name="use">
+        <item>While more than four decades of continuous astrological research and dedication has helped GatyatmakJyotish develop a loyal following, we have been working to develop a mobile application which could help us connect better in the smartphone era. Now with the launch of this app, which needs only your basic birth details to operate, we will be able to provide users with a range of services ranging from a daily forecast to a life charter. </item>
+    </string-array>
+    <string-array name="qwerty">
+        <item>According to Gatyatmak Jyotish, the cause for one’s various physiological, psychological and other problems in life are weak or unfavourable planetary positions.These problems can be minimized only by reducing the effect of these planets on the person, through the following ways:
+        </item>
+        <item>1. Time Management –Travellers often reach their destination even in the dark, students forget their watches at home but still complete their exams and people complete an entire year without a calendar, however the presence of a torch, a watch and an organised calendar at appropriate times makes everything significantly easier and less tense. GatyatmakJyotish does a similar job – it is impossible to completely revert the negative effects of a planet, but methods of reducing negative and boosting positive effects can be easily known through a consultation.
+</item>
+        <item>2. Effective ring or locket –Moon is in its weakest position on New Moon day but grows day-by-day and becomes most powerful during Full Moon. If one reflects upon their psychological condition on these two days, they will definitely find a difference. Wearing a a ring or a locket,forged from completely molten pure silver on a full moon day, affects the wearer with positive energy of the moon contained in it and boosts his psychological capabilities.These rings must be made when most planets are in favourable positions with respect to the location where they are forged. This auspicious two hour period can be determined to improve effectiveness of the rings.
+        </item>
+        <item>3. Choosing colours – Gatyatmak Jyotish suggests ‘colour therapy’ as an effective method of diminishing or amplifying planetary effects. It is known that difference in the colour of various substances is the reason behind the difference in absorption and reflection of visible light rays between them. Using the same principle, the colour white can be associated with the Moon, green with Mercury, red with Mars,sparkly white with Venus, fire red with the sun, yellow with Jupiter and black with Saturn. Incorporating these colours in your life in the form of stones, clothes, everyday objects and even walls in your house can help reap benefits from corresponding planets.</item>
+        <item>4. Effect of Social Circles –Man is a social animal and one is often exposed to several facts about the weightage of one’s social life in shaping a person. It is said that one is the average of five people that one spends the most time with. Gatyatmak Jyotish accepts the significance of one’s social circles. The person with negative effects of a planet should establish relationships with people that have positive effects of the same. For example, a child born on New Moon day has a weaker personality development, which is ruled by the moon and hence is suppressed in society due to his introverted nature. However, if encouraged to interact with extroverted children, born during the Full Moon, the child’s personality may change with time. The same applies to other aspects of life and their respective planets.
+        </item>
+        <item>5. Importance of Charity – The importance of charity on auspicious occasions and festivals in suppressing negative effects of planets is well documented in ancient Hindu religious texts. Charity, which corresponds to weakness in one’s planetary positions, helps in reducing negative effects of the same. For example, one who has a weak Moon should make donations to the orphanage, especially to unprivileged children under 12 years of age. Similarly, one with a weak Mercury should donate to research or help in intellectual development of students. A person with weak Mars should help young adults and mentor them to achieve success. One with a negative Venus should help out in marriages of girls and ones with a weak sun should help victims of natural calamities and disasters. Ones with weak Jupiter would benefit from taking care of and serving their elders and teachers, and ones with a weak Saturn should donate to old age homes and help nearby elders with their needs.
+        </item>
+        <item>6. Significance of flora – All animals, including humans, have been in a symbiotic relationship with plants, helping each other to constantly evolve over millions of years. Gatyatmak Jyotish understands this connection and subscribes relevant steps to improve it. For example, a person with weak Moon should plant small leaved medicinal herbs like Tulsi, while one with weak Mercury should plant small non-flower / non-fruit bearing plants or small green fruit bearing plants.Similarly, one with weak Mars should plant red coloured fruit and flower bearing trees, while those with a weak Venus should plant white-coloured fruit and flower bearing trees. Ones with weak Sun must plant fire red-coloured fruit and flower bearing trees, and those with weak Jupiter must plant yellow-coloured fruit and flower bearing trees. People who have a weak Saturn may benefit from planting the Sacred Fig or Banyan trees.
+        </item>
+        <item>7. Prayer – Often in life we are faced with situations that neither we can handle on our own nor can we take help from others to solve. It is at this time we remember and begin praying to a higher power. Prayer to a higher power helps us in establishing a connection to not only to the power, but also to nature. While spiritual and religious people pray often, others obtain faith and prayin times of distress. In order to pray successfully, one must submit oneself completely and bow down from all pride, with a clean and pure mind. Praying for oneself, their friends and family helps in curbing negativity from the planetary positions and brings about positivity.
+   </item>
+    </string-array>
+
+
+</resources>

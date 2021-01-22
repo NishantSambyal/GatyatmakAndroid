@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <android.support.design.widget.AppBarLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+      tools:context="com.spaceo.notificationalertdemo.MainActivity">
+
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
+
+
+  </android.support.design.widget.AppBarLayout>
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/payment" />
+
+    <TextView
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:autoLink="email"
+        android:linksClickable="true"
+        android:text="Payment Successful \n Contact us in case of any query \n Email id - gatyatmakjyotishhelp@gmail.com"
+        android:id="@+id/txtcontact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+  android:layout_alignParentBottom="true"
+      android:id="@+id/click"
+      android:background="@color/colorPrimary"
+      android:fontFamily="@font/helvetica_bold"
+      android:text="@string/done"
+      android:layout_marginBottom="10dp"
+      android:textSize="20dp"
+      android:textStyle="bold"/>
+  </RelativeLayout>
+
+</LinearLayout>

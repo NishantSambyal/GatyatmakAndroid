@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/our_mission_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ourmissiontrans"
+        android:visibility="gone"/>
+
+    <com.codesgood.views.JustifiedTextView
+        android:id="@+id/textview"
+        android:layout_width="match_parent"
+        android:lineSpacingExtra="5dp"
+        android:fontFamily="@font/helvetica"
+        android:textColor="@color/colorTextColor"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

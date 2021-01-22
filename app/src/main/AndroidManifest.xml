@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.gatyatmakjyotish">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/gatyatmak_new"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar"
+        android:largeHeap="true"
+        android:hardwareAccelerated="false"
+        android:usesCleartextTraffic="true">
+
+        <activity android:name="com.gatyatmakjyotish.ui.activity.WaitingForLetter"></activity>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyAe2JrUxTmyOVrUfhlT-y7HAgxacQaZ4qE" />
+            <meta-data
+                android:name="com.google.firebase.messaging.default_notification_icon"
+                android:resource="@mipmap/ic_launcher_round"
+                />
+            <meta-data
+                android:name="com.google.firebase.messaging.default_notification_color"
+                android:resource="@android:color/transparent" />
+
+            <meta-data
+                android:name="com.google.android.gms.version"
+                android:value="@integer/google_play_services_version" />
+        </activity> <!-- <activity android:name=".ui.activity.MainActivity" -->
+        <!-- android:launchMode="standard"/> -->
+        <activity
+            android:name="com.gatyatmakjyotish.ui.activity.MainActivity"/>
+        <activity
+            android:name="com.gatyatmakjyotish.ui.activity.FrontScreen"
+            android:launchMode="standard" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.SignUp" />
+        <activity
+            android:name="com.gatyatmakjyotish.ui.activity.DashBoard"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Language" />
+        <activity android:name="com.gatyatmakjyotish.ui.fragmentBase.Blog" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.OtherServices" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Payment" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.ForgotPassword" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.UserProfile" />
+        <activity android:name="com.gatyatmakjyotish.ui.fragmentBase.Email_base" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Set" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Books" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.ChangeFontSize" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.ChangePassword" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.AboutUs" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.ContactUs" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.ReferEarn" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Team" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Marketing" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.PointstoKnow" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.SubscriptionActivity" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.OurMissionActivity" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.UseofApp" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Cart" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.HoroscopeMatchingActivity" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Remedy" />
+        <activity android:name="com.gatyatmakjyotish.util.ImageViewer" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.NotificationActivity" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Notification"
+            android:exported="true"
+            />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.CompareKundali" />
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_sEFlSto281GZCY" />
+
+        <service
+            android:name="com.gatyatmakjyotish.Services.MyFirebaseIdSevice">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.gatyatmakjyotish.Services.MyFirebaseMessagingService"
+           >
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.gatyatmakjyotish.Services.FirebaseBroadcastReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>

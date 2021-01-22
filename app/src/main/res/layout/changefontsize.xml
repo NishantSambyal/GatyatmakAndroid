@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fontsize"
+        android:id="@+id/text"
+        android:textStyle="bold"
+        android:fontFamily="@font/mangal"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="40dp"/>
+
+    <RadioGroup
+        android:id="@+id/device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+
+        >
+    <RadioButton
+        android:id="@+id/rd_device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/usedevicefontsize"
+        android:textSize="20sp"
+        android:layout_marginTop="7dp"
+        android:padding="10dp"
+        />
+        <RadioButton
+            android:id="@+id/rd_tiny"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="@string/tiny"
+            android:textSize="15sp"
+            android:layout_marginTop="7dp"
+            android:padding="10dp"
+            />
+        <RadioButton
+            android:id="@+id/rd_medium"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Medium"
+            android:textSize="24sp"
+            android:layout_marginTop="7dp"
+            android:padding="10dp"
+            />
+
+        <RadioButton
+            android:id="@+id/rd_large"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="@string/Large"
+            android:textSize="26sp"
+            android:layout_marginTop="7dp"
+            android:padding="10dp"
+            />
+        <RadioButton
+            android:id="@+id/rd_extralarge"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/ExtraLarge"
+            android:textSize="30sp"
+            android:layout_marginTop="7dp"
+            android:padding="10dp"
+            />
+
+        <RadioButton
+            android:id="@+id/rd_huge"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/Huge"
+            android:textSize="35sp"
+            android:layout_marginTop="7dp"
+            android:padding="10dp"
+            />
+      </RadioGroup>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="50dp"
+            android:background="@color/colorPrimary"
+            android:textSize="12sp"
+            android:id="@+id/button"
+            android:fontFamily="@font/helvetica_bold"
+            android:text="@string/ok"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="50dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/cancel"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="50dp"
+            android:background="@color/colorPrimary"
+            android:textSize="12sp"
+            android:fontFamily="@font/helvetica_bold"
+            android:text="@string/places_cancel"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="50dp" />
+
+    </LinearLayout>
+</LinearLayout>

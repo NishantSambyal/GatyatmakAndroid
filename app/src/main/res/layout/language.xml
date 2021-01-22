@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+
+    <TextView
+        android:id="@+id/languageindicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="60dp"
+        android:text="Please Select Your Language"
+        android:textSize="20dp" />
+
+    <RadioGroup
+        android:id="@+id/rd_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/english"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="English"
+            android:textSize="15dp"
+            android:textStyle="normal" />
+
+        <RadioButton
+            android:id="@+id/hindi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Hindi"
+            android:textSize="15dp"
+            android:textStyle="normal" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/langbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:background="@color/colorPrimary"
+        android:text="ok"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+</LinearLayout>

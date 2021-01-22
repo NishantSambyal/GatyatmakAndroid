@@ -1,0 +1,130 @@
+{
+  "project_info": {
+    "project_number": "745125530624",
+    "firebase_url": "https://gatyatmakjyotish-384d4.firebaseio.com",
+    "project_id": "gatyatmakjyotish-384d4",
+    "storage_bucket": "gatyatmakjyotish-384d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745125530624:android:d3fbc5e6f43fc88a",
+        "android_client_info": {
+          "package_name": "com.example.ridhi.gatyatmakjyotish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "745125530624-4i3bf1qcbdp787q83k8hn353as9vkeg8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ridhi.gatyatmakjyotish",
+            "certificate_hash": "259cdcab554270780204c98684ceca38e6a4fea7"
+          }
+        },
+        {
+          "client_id": "745125530624-7uiirgjf75a92ihkdjkhcnn6f87tdibf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ridhi.gatyatmakjyotish",
+            "certificate_hash": "40ccf4e71e3ae40922288de80e58703e7f85de30"
+          }
+        },
+        {
+          "client_id": "745125530624-2vlj2ehmtg4hlhom1k946vkrfkikf22k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-lcRv9VR_xbingF08FFWqqlnSr2YchP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "745125530624-2vlj2ehmtg4hlhom1k946vkrfkikf22k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745125530624:android:2d71b0d1616f3aac2a5ce5",
+        "android_client_info": {
+          "package_name": "com.gatyatmakjyotish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "745125530624-kuqq30eq11i1tb9uid50jf8dskeak90h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gatyatmakjyotish",
+            "certificate_hash": "9f425add3c41dbc9e1a2cb79c67e670b1e4f14ba"
+          }
+        },
+        {
+          "client_id": "745125530624-2vlj2ehmtg4hlhom1k946vkrfkikf22k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-lcRv9VR_xbingF08FFWqqlnSr2YchP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "745125530624-2vlj2ehmtg4hlhom1k946vkrfkikf22k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745125530624:android:aec5717daeb6f5302a5ce5",
+        "android_client_info": {
+          "package_name": "com.gatyatmakjyotish.ridhi.gatyatmakjyotish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "745125530624-km941hf626btqikin93mabvoi3ktrd6a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gatyatmakjyotish.ridhi.gatyatmakjyotish",
+            "certificate_hash": "9f425add3c41dbc9e1a2cb79c67e670b1e4f14ba"
+          }
+        },
+        {
+          "client_id": "745125530624-2vlj2ehmtg4hlhom1k946vkrfkikf22k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-lcRv9VR_xbingF08FFWqqlnSr2YchP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "745125530624-2vlj2ehmtg4hlhom1k946vkrfkikf22k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

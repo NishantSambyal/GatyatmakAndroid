@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item  android:id="@+id/item1"
+        android:title="@string/publish"/>
+    <item  android:id="@+id/item2"
+        android:title="@string/remedy"/>
+    <item  android:id="@+id/item3"
+        android:title="@string/pointsforliving"/>
+    <item  android:id="@+id/item4"
+        android:title="@string/our_mission"/>
+    <item  android:id="@+id/item5"
+        android:title="@string/useofapp"
+        android:visible="false"/>
+    <item android:id="@+id/item6"
+        android:title="@string/team"/>
+    <item android:id="@+id/item7"
+        android:title="@string/changelanguage"/>
+    <item android:id="@+id/item8"
+        android:title="@string/aboutus"/>
+    <item android:id="@+id/item9"
+        android:title="@string/Contactus"/>
+
+
+</menu>

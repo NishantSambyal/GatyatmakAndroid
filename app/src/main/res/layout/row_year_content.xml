@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:visibility="visible"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@drawable/rectangle_with_border">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pointstoknow" />
+
+        <TextView
+            android:id="@+id/tv_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:gravity="center"
+            android:text="@string/no_data"
+            android:fontFamily="@font/helvetica"
+            android:lineSpacingExtra="5dp"
+            android:textColor="@color/colorTextColor" />
+
+    </LinearLayout>
+
+    <com.codesgood.views.JustifiedTextView
+        android:id="@+id/tv_feeling"
+        android:layout_width="match_parent"
+        android:lineSpacingExtra="5dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/helvetica"
+        android:padding="5dp"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.codesgood.views.JustifiedTextView
+        android:layout_width="match_parent"
+        android:lineSpacingExtra="5dp"
+        android:fontFamily="@font/helvetica"
+        android:textColor="@color/colorTextColor"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tv_description"
+        android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

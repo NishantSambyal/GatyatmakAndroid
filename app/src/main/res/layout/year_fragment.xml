@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="6dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:padding="10dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/custome_spiner"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/down" />
+
+    </RelativeLayout>
+
+    <com.codesgood.views.JustifiedTextView
+        android:layout_width="match_parent"
+        android:id="@+id/tv_date"
+        android:textColor="@color/colorPrimaryDark"
+        android:lineSpacingExtra="5dp"
+        android:fontFamily="@font/helvetica_bold"
+        android:layout_below="@+id/main"
+        android:padding="15dp"
+        android:layout_marginLeft="5dp"
+        android:visibility="visible"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_date"
+        android:visibility="visible"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp"
+        android:scrollbars="vertical"/>
+
+
+
+    <TextView
+        android:id="@+id/tv_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_date"
+        android:text="@string/no_data"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/helvetica"
+        android:lineSpacingExtra="5dp"
+        android:visibility="gone"
+        android:textColor="@color/colorTextColor" />
+
+
+    <include layout="@layout/row_year_content"/>
+
+    <LinearLayout
+        android:id="@+id/layout_prev_next1"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/quantum_white_100"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible">
+
+
+        <Button
+            android:id="@+id/previous"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/helvetica_bold"
+            android:paddingTop="5dp"
+            android:drawableTop="@drawable/ic_fast_rewind_black_24dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:background="@color/colorPrimary"
+            android:fontFamily="@font/helvetica_bold"
+            android:paddingTop="5dp"
+            android:drawableTop="@drawable/ic_fast_forward_black_24dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</RelativeLayout>
+
