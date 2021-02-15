@@ -1,16 +1,17 @@
 package com.gatyatmakjyotish.ui.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
@@ -23,9 +24,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.gatyatmakjyotish.ModelClass.PublishModel;
 import com.gatyatmakjyotish.R;
 import com.gatyatmakjyotish.adapters.CartAdapter;
+import com.gatyatmakjyotish.constants.Api;
 import com.gatyatmakjyotish.util.Util;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -41,8 +47,10 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import static com.gatyatmakjyotish.constants.Constants.EMAIL;
 import static com.gatyatmakjyotish.constants.Constants.ID;
@@ -655,11 +663,12 @@ public class Cart extends AppCompatActivity implements PaymentResultListener {
 
     @Override
     public void onPaymentError(int code, String response) {
-        try {
-            Toast.makeText(this, "Payment error please try again", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Log.e("OnPaymentError", "Exception in onPaymentError", e);
-        }
+//        try {
+//            Toast.makeText(this, "Payment error please try again", Toast.LENGTH_SHORT).show();
+//        } catch (Exception e) {
+//            Log.e("OnPaymentError", "Exception in onPaymentError", e);
+//        }
+        callApiForPaymentFailure(response);
     }
 
     private String getCartDetails(){
@@ -715,6 +724,80 @@ public class Cart extends AppCompatActivity implements PaymentResultListener {
             finish();
     }
 
+    private void callApiForPaymentFailure(String resp){
+        progressDialog = new ProgressDialog(Cart.this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Please wait...");
+        progressDialog.show();
+
+        String desc = "payment failed";
+        try{
+            desc = new JSONObject(resp).getJSONObject("error").getString("description");
+        }catch (Exception e){}
+
+        Map<String, String> postParams = new HashMap<>();
+        postParams.put("user_id",loginSharedPreferences.getString(ID,""));
+        postParams.put("transaction_id","");
+        postParams.put("type","service");
+        postParams.put("amount",subtotal+"");
+        postParams.put("gst",gst+"");
+        postParams.put("status","0");
+
+        postParams.put("description", desc);
+//        postParams.put("wallet_point",tv_finalwallet_amount+"");
+//        postParams.put("final_amount",final_total+"");
+
+            postParams.put("product",getCartDetails());
+            postParams.put("product_user",getUserDetails());
+
+        AndroidNetworking.post(Api.PAYMENT_FAILED_API)
+                .addBodyParameter(postParams)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        progressDialog.dismiss();
+                        // do anything with response
+                        try {
+                            boolean status = response.getBoolean("status");
+                            if (status == true){
+                                Toast.makeText(Cart.this, "Payment detail submitted", Toast.LENGTH_SHORT).show();
+                            }else {
+                                showDialog("Please, Try again!!", resp);
+                            }
+//                            Toast.makeText(Cart.this, "Payment failed respon", Toast.LENGTH_SHORT).show();
+                        }catch (Exception e){
+                            showDialog("Please, Try again!!", resp);
+                        }
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error
+                        progressDialog.dismiss();
+                        showDialog("Please, Try again!!", resp);
+                    }
+                });
+    }
+
+    private void showDialog(String msg, String response){
+        new AlertDialog.Builder(this)
+                .setMessage(msg)
+//                .setMessage("Payment failed!\nPlease, Try again!!")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        callApiForPaymentFailure(response);
+                    }
+                })
+                .show();
+    }
+
+
+
+
+
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -724,6 +807,7 @@ public class Cart extends AppCompatActivity implements PaymentResultListener {
     private void finishActivty() {
         finish();
     }
+
 }
 
 

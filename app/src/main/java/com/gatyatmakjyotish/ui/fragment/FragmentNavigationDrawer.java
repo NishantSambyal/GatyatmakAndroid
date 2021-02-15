@@ -1,17 +1,16 @@
 package com.gatyatmakjyotish.ui.fragment;
 
-import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,8 +39,6 @@ import com.gatyatmakjyotish.ui.fragmentBase.Blog;
 import com.gatyatmakjyotish.util.Util;
 
 import java.text.DecimalFormat;
-
-import hotchemi.android.rate.AppRate;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.gatyatmakjyotish.constants.Constants.EMAIL;

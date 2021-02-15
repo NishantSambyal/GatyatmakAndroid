@@ -12,7 +12,7 @@ import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import android.util.Log;
 
 
@@ -23,8 +23,6 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.Map;
 import static android.app.Notification.BADGE_ICON_SMALL;
 
@@ -37,7 +35,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     int count=0;
     Bitmap image;
     RemoteMessage rm;
-
 
     @Override
     public void onNewToken(String s) {

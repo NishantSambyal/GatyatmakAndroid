@@ -4,9 +4,8 @@ package com.gatyatmakjyotish.util;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
-public class FullImageView extends android.support.v7.widget.AppCompatImageView {
+public class FullImageView extends androidx.appcompat.widget.AppCompatImageView {
 
     public FullImageView(final Context context, final AttributeSet attrs) {
         super(context, attrs);

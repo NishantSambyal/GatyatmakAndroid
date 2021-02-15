@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,7 +42,7 @@ import static com.gatyatmakjyotish.constants.Constants.TIME_OF_BIRTH;
 public class UserProfile extends AppCompatActivity {
     EditText name, dob, tob, pob, gender, location, mob, emailaddress;
     SharedPreferences sharedPreferences;
-    android.support.v7.widget.Toolbar toolbar;
+    androidx.appcompat.widget.Toolbar toolbar;
     TextView edit;
     Button button;
 

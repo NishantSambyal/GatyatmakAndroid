@@ -1,21 +1,14 @@
 package com.gatyatmakjyotish.ui.activity;
 
 import android.app.Dialog;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+
 import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,11 +17,6 @@ import android.widget.TextView;
 import com.gatyatmakjyotish.R;
 import com.gatyatmakjyotish.util.SaveTextSize;
 import com.gatyatmakjyotish.util.Util;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
-import com.vorlonsoft.android.rate.AppRate;
-import com.vorlonsoft.android.rate.OnClickButtonListener;
-import com.vorlonsoft.android.rate.StoreType;
 
 public class PointstoKnow  extends AppCompatActivity {
     private TextView tv_points,topPoint;

@@ -6,16 +6,17 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.gatyatmakjyotish.R;
 
@@ -148,16 +149,28 @@ public class Util {
 
     public static DatePickerDialog setUpDatePicker(final EditText editText, Context context) {
         final Calendar newCalendar = Calendar.getInstance();
-        final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
         DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                newCalendar.set(year, month, dayOfMonth);
-                editText.setText(dateFormatter.format(newCalendar.getTime()));
+                try {
+                    String sDOB = "" + year + "-" + appendZeroIf(month+1) + "-" + appendZeroIf(dayOfMonth);
+//                    Toast.makeText(context, sDOB, Toast.LENGTH_SHORT).show();
+                    editText.setText(sDOB);
+//                    editText.setText(dateFormatter.format(newCalendar.getTime()));
+                    newCalendar.set(year, month, dayOfMonth);
+                }catch (Exception e){}
             }
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
         return datePickerDialog;
 
+    }
+
+    private static String appendZeroIf(int n){
+        if (n <= 9){
+            return "0"+n;
+        }
+            return ""+n;
     }
 
 
@@ -218,7 +231,7 @@ public class Util {
     }
 
     public static Calendar getCalendar(Date date) {
-        Calendar cal = Calendar.getInstance(Locale.US);
+        Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         return cal;
     }

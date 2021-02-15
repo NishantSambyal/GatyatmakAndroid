@@ -1,30 +1,24 @@
 package com.gatyatmakjyotish.ui.activity;
 
 import android.app.ProgressDialog;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager.widget.ViewPager;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,39 +30,23 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.gatyatmakjyotish.ModelClass.PublishModel;
 import com.gatyatmakjyotish.R;
 import com.gatyatmakjyotish.constants.Api;
-import com.gatyatmakjyotish.constants.Constants;
-import com.gatyatmakjyotish.ui.fragment.FragmentNavigationDrawer;
-import com.gatyatmakjyotish.ui.fragment.Publish;
-import com.gatyatmakjyotish.ui.fragment.Service;
-import com.gatyatmakjyotish.ui.fragment.Year;
 import com.gatyatmakjyotish.util.Util;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import static com.gatyatmakjyotish.adapters.AboutAdapter.dailyStatus;
-import static com.gatyatmakjyotish.adapters.AboutAdapter.yearlyStatus;
 import static com.gatyatmakjyotish.constants.Constants.ID;
 import static com.gatyatmakjyotish.constants.Constants.LOGIN_PREF;
-import static com.gatyatmakjyotish.constants.Constants.NOTIFICATION_PREF;
 
 public class CompareKundali extends AppCompatActivity {
     private Toolbar toolbar;

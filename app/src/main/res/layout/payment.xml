@@ -6,7 +6,7 @@
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools">
 
-  <android.support.design.widget.AppBarLayout
+  <com.google.android.material.appbar.AppBarLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -16,7 +16,7 @@
         android:id="@+id/toolbar"/>
 
 
-  </android.support.design.widget.AppBarLayout>
+  </com.google.android.material.appbar.AppBarLayout>
   <RelativeLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

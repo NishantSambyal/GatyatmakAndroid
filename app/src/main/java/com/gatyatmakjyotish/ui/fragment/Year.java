@@ -4,15 +4,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.Movie;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -70,7 +68,7 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
 
     YearAdapter yearAdapter;
     ProgressDialog progressDialog;
-    LinearLayout prevNextLayout, noDataLayout;
+    LinearLayout prevNextLayout;
     private String user_id = "";
     private String currentDate = "";
     private String currentDate2 = "";
@@ -90,17 +88,14 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
         //recyclerViewYear.setAdapter(yearAdapter = new YearAdapter());
         textViewNoData = v.findViewById(R.id.tv_no_data);
         date = v.findViewById(R.id.tv_date);
-        feeling = v.findViewById(R.id.tv_feeling);
-        description = v.findViewById(R.id.tv_description);
         prevNextLayout = v.findViewById(R.id.layout_prev_next1);
-        noDataLayout = v.findViewById(R.id.layout_no_data);
         previous = v.findViewById(R.id.previous);
         next = v.findViewById(R.id.next);
         user_id = getUserID();
         getCurrentDate();
         postnewcomment(getActivity());
-        return v;
 
+        return v;
     }
 
     private String getUserID() {
@@ -161,27 +156,18 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinner.setAdapter(adapter);
 
-
-//                        Api.YEAR_RESULT_API = Api.BASE_URL + Api.RESULT + "/" + user_id + "/" + yearCategoryList.get(0).getId();
-//                        System.out.println(Api.YEAR_RESULT_API);
-//                        add=0;
-//                        tempFlag=false;
-//                        count=0;
-//                        //postnewcom(Api.YEAR_RESULT_API, getActivity());
-//                        postnewcom(Api.BASE_URL+"result1" + "/" + user_id + "/" + yearCategoryList.get(0).getId(), getActivity());
-//
-//
-
                         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                                Api.YEAR_RESULT_API = Api.BASE_URL_STAGE + Api.RESULT + "/" + user_id + "/" + yearCategoryList.get(position).getId();
+                                Api.YEAR_RESULT_API = Api.BASE_URL + Api.RESULT + "/" + user_id + "/" + yearCategoryList.get(position).getId();
                                 System.out.println(Api.YEAR_RESULT_API);
                                 add = 0;
                                 tempFlag = false;
                                 count = 0;
                                 //postnewcom(Api.YEAR_RESULT_API, getActivity());
-                                postnewcom(Api.BASE_URL_STAGE + "result" + "/" + user_id + "/" + yearCategoryList.get(position).getId(), getActivity());
+//                                postnewcom(Api.BASE_URL + "result" + "/" + user_id + "/" + yearCategoryList.get(position).getId(), getActivity());
+                                postnewcom(Api.BASE_URL + Api.RESULT + "/" + user_id + "/" + yearCategoryList.get(position).getId(), getActivity());
+
 
                             }
 
@@ -260,152 +246,73 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                     setIsPaid(jsonObject.getInt("is_paid"));
                     if (languagePreference.getString("language", Constants.Language.ENGLISH.getLanguage()).equals(Constants.Language.ENGLISH.getLanguage())) {
                         for (int i = 0; i < jsonArray.length(); i++) {
-                            String description = "";
-                            /*JSONObject jsonObject = jsonArray.getJSONObject(i);
-                            JSONObject original = jsonObject.getJSONObject("original");
-                            JSONObject object = original.getJSONObject("object");*/
-                            JSONObject object = jsonArray.getJSONArray(i).getJSONObject(0);
-                            //JSONObject object = jsonObject.getJSONObject("object");
 
-                            description = object.getString("description");
+                            try {
+                                JSONObject jObject = jsonArray.getJSONObject(i);
 
-                            String feeling = "";
-                            String fromdate = "";
-                            String todate = "";
-                            String date = "";
+                                boolean status = jObject.getBoolean("status");
+                                if (status) {
+                                //SETTING DATE
+                                ResultCategory resultCategory = new ResultCategory();
+                                String s = jObject.getString("date");
+                                resultCategory.setDate(jObject.getString("date"));
+                                resultCategory.setFromdate(jObject.getString("from_at"));
+                                resultCategory.setTodate(jObject.getString("to_at"));
 
-                            if(!object.isNull("date"))
-                            {
-                                date = object.getString("date");
-                            }
+                                //SETTING LIST DATA
+                                JSONArray jDataArray = jObject.getJSONArray("data");
+                                List<YearResult> yearResults1 = new ArrayList<>();
+                                for (int j = 0; j < jDataArray.length(); j++) {
+                                    try {
+                                        JSONObject jObject2 = jDataArray.getJSONObject(j);
+                                        String feeling = jObject2.getString("feeling");
+                                        String description = jObject2.getString("description");
 
-                            if(!object.isNull("feeling"))
-                            {
-                                feeling =object.getString("feeling");
-                            }
-
-                            if(!object.isNull("from_date"))
-                            {
-                                fromdate = object.getString("from_date");
-                            }
-
-                            if(!object.isNull("to_date"))
-                            {
-                                todate = object.getString("to_date");
-                            }
-
-
-
-
-                            ResultCategory resultCategory = new ResultCategory();
-
-                            resultCategory.setDate(object.getString("date"));
-                            resultCategory.setFromdate(object.getString("from_date"));
-                            resultCategory.setTodate(object.getString("to_date"));
-                            List<YearResult> yearResults1 = new ArrayList<>();
-
-                           /* if (object.getBoolean("status")) {
-                                JSONArray jsonArrayData = object.getJSONArray("data");
-                                for (int j = 0; j < jsonArrayData.length(); j++) {
-                                    JSONObject jsonObject1 = jsonArrayData.getJSONObject(j);
-                                    YearResult yearResult = new YearResult(jsonObject1.getString("feeling"), jsonObject1.getString("description"));
-                                    yearResults1.add(yearResult);
+                                        yearResults1.add(new YearResult(feeling, description));
+                                    } catch (Exception e) {
+                                    }
                                 }
-                            } else {
+                                resultCategory.setYearResults(yearResults1);
 
-                            }*/
+                                resultCategoryList.add(resultCategory);
 
-
-                            YearResult yearResult = new YearResult(feeling, description);
-                            yearResults1.add(yearResult);
-
-
-
-                            resultCategory.setYearResults(yearResults1);
-
-
-                            resultCategoryList.add(resultCategory);
-
-//                            for (int j = 0; j < jsonArrayData.length(); i++) {
-//
-//                            }
-
-//                            if(!object.isNull("description"))
-//                                description = object.getString("description");
-//                                resultCategoryList.add(new ResultCategory(object.getString("date"),object.getString("feeling"),
-//                                    description,object.getString("from_date"),object.getString("to_date")));
-
+                            }
+                            }catch (Exception e){}
                         }
                     } else {
                         for (int i = 0; i < jsonArray.length(); i++) {
-                            String description = "";
-                            /*JSONObject jsonObject = jsonArray.getJSONObject(i);
-                            JSONObject original = jsonObject.getJSONObject("original");
-                            JSONObject object = original.getJSONObject("object");*/
-                            JSONObject object = jsonArray.getJSONArray(i).getJSONObject(0);
 
-                            description = object.getString("description_hindi");
+                            try {
+                                JSONObject jObject = jsonArray.getJSONObject(i);
 
-                            String feeling = "";
-                            String fromdate = "";
-                            String todate = "";
-                            String date = "";
+                                boolean status = jObject.getBoolean("status");
+                                if (status) {
+                                //  SETTING DATE
+                                ResultCategory resultCategory = new ResultCategory();
+                                resultCategory.setDate(jObject.getString("hindi_date"));
+                                resultCategory.setFromdate(jObject.getString("from_at"));
+                                resultCategory.setTodate(jObject.getString("to_at"));
 
-                            if(!object.isNull("date"))
-                            {
-                                date = object.getString("date");
-                            }
+                                // SETTING LIST
+                                JSONArray jDataArray = jObject.getJSONArray("data");
+                                List<YearResult> yearResults1 = new ArrayList<>();
+                                for (int j = 0; j < jDataArray.length(); j++) {
+                                    try {
+                                        JSONObject jObject2 = jDataArray.getJSONObject(j);
+                                        String feeling = jObject2.getString("feeling_hindi");
+                                        String description = jObject2.getString("description_hindi");
 
-                            if(!object.isNull("feeling_hindi"))
-                            {
-                                feeling =object.getString("feeling_hindi");
-                            }
-
-                            if(!object.isNull("from_date"))
-                            {
-                                fromdate = object.getString("from_date");
-                            }
-
-                            if(!object.isNull("to_date"))
-                            {
-                                todate = object.getString("to_date");
-                            }
-
-
-
-
-                            ResultCategory resultCategory = new ResultCategory();
-
-                            resultCategory.setDate(object.getString("hindi_date"));
-                            resultCategory.setFromdate(object.getString("from_date"));
-                            resultCategory.setTodate(object.getString("to_date"));
-                            List<YearResult> yearResults1 = new ArrayList<>();
-
-                          /*  if (object.getBoolean("status")) {
-                                JSONArray jsonArrayData = object.getJSONArray("data");
-                                for (int j = 0; j < jsonArrayData.length(); j++) {
-                                    JSONObject jsonObject1 = jsonArrayData.getJSONObject(j);
-                                    YearResult yearResult = new YearResult(jsonObject1.getString("feeling_hindi"), jsonObject1.getString("description_hindi"));
-                                    yearResults1.add(yearResult);
+                                        yearResults1.add(new YearResult(feeling, description));
+                                    } catch (Exception e) {
+                                    }
                                 }
-                            } else {
+                                resultCategory.setYearResults(yearResults1);
 
-                            }*/
+                                resultCategoryList.add(resultCategory);
 
+                            }
+                            }catch (Exception e){}
 
-                            YearResult yearResult = new YearResult(feeling, description);
-                            yearResults1.add(yearResult);
-
-                            resultCategory.setYearResults(yearResults1);
-
-
-                            resultCategoryList.add(resultCategory);
-                            //JSONObject object = jsonObject.getJSONObject("object");
-
-//                            if(!object.isNull("description_hindi"))
-//                                description = object.getString("description_hindi");
-//                            resultCategoryList.add(new ResultCategory(object.getString("hindi_date"),object.getString("feeling_hindi"),
-//                                    description,object.getString("from_date"),object.getString("to_date")));
                         }
                     }
                     getCount();
@@ -413,28 +320,14 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                     if (tempFlag) {
                         data(jsonArray.length());
                         tempFlag = false;
-                        //yearAdapter.setAdapter(resultCategoryList);
-//                        date.setVisibility(View.VISIBLE);
-//                        feeling.setVisibility(View.VISIBLE);
-//                        description.setVisibility(View.VISIBLE);
+
                         prevNextLayout.setVisibility(View.VISIBLE);
-                        noDataLayout.setVisibility(View.GONE);
                     } else {
                         data(jsonArray.length());
-//                        date.setVisibility(View.GONE);
-//                        feeling.setVisibility(View.GONE);
-//                        description.setVisibility(View.GONE);
                         prevNextLayout.setVisibility(View.VISIBLE);
-                        noDataLayout.setVisibility(View.VISIBLE);
-                        // count = i;
 
                     }
 
-                    //count=0;
-
-                    // yearAdapter.notifyDataSetChanged();
-
-                    //yearAdapter.setAdapter(resultCategoryList);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -449,11 +342,6 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
-
-               /* params.put("language", sharedPreferences.getString("language", Constants.Language.ENGLISH.getLanguage()).
-                        equals(Constants.Language.ENGLISH.getLanguage()) ? Constants.Language.ENGLISH.getLanguage() :
-                        Constants.Language.HINDI.getLanguage());
-*/
                 return params;
             }
         };
@@ -473,7 +361,7 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
 
     int count;
 
-    public void data(final int resultCategoryList) {
+    public void data(final int resultCategoryListSize) {
 
         getData(count);
 
@@ -482,15 +370,20 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
             public void onClick(View v) {
 
                 if (sharedPreferences.getInt("is_paid", 0) == 0) {
-                    if (count < resultCategoryList - 1 && count + 1 <= temp_count + 1) {
+                    if (count < resultCategoryListSize - 1 && count + 1 <= temp_count + 1) {
                         count = count + 1;
                         getData(count);
                     } else
                         startActivity(new Intent(getContext(), SubscriptionActivity.class));
                 } else {
-                    if (count + 1 < resultCategoryList) {
-                        count = count + 1;
-                        getData(count);
+                    if (count + 2 < resultCategoryListSize) {
+                        try {
+                            count = count + 1;
+                            resultCategoryList.get(count - 1).getDate();
+                            getData(count);
+                        }catch (Exception e){
+                            count = count -1;
+                        }
                     }
                 }
 
@@ -516,9 +409,9 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                     } else
                         startActivity(new Intent(getContext(), SubscriptionActivity.class));
                 } else {
-                    if (count > 0) {
-                        count = count - 1;
-                        getData(count);
+                    if (count-1 > 0) {
+                            count = count - 1;
+                            getData(count);
                     } else {
                         return;
                     }
@@ -528,7 +421,7 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
 
     }
 
-    private TextView date, feeling, description;
+    private TextView date;
     private Button previous, next;
 
     private void getCount() {
@@ -572,14 +465,7 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                     if (add < resultCategoryList.size() - 1 && !tempFlag) {
                         getCount2();
                     }
-                }/*else {
-                 *//* tempFlag = true;
-                            count = i - 3;*//*
-                        }*/
-                //if(tempFlag)
-                //  break;
-
-
+                }
             }
         } catch (Exception e) {
             System.out.println("exception " + e.getMessage());
@@ -603,11 +489,6 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
 
 
             for (int q = 0; q < resultCategoryList.size(); q++) {
-/*
-
-                    if (tempFlag)
-                        break;
-*/
 
                 if (new SimpleDateFormat("yyyy-MM-dd").parse(currentDate2).
                         equals(new SimpleDateFormat("yyyy-MM-dd").
@@ -651,23 +532,22 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
 
     public void getData(int count) {
 
-
         try {
-            date.setText(resultCategoryList.get(count).getDate() + "");
+            date.setText(resultCategoryList.get(count-1).getDate() + "");
 
             yearResultList.clear();
 
 
-            if (resultCategoryList.get(count).getYearResults().size() <= 0) {
+            if (resultCategoryList.get(count-1).getYearResults().size() <= 0) {
                 textViewNoData.setVisibility(View.VISIBLE);
                 recyclerViewYear.setVisibility(View.GONE);
 
                 if (languagePreference.getString("language", Constants.Language.ENGLISH.getLanguage()).equals(Constants.Language.ENGLISH.getLanguage())) {
                     //textViewNoData.setText("In these cases, your time is going on as usual");
-                    textViewNoData.setText("Now there is no such planetary position regarding these matters which can present quite nice or quite bad feelings for you. If good or bad results unexpectedly occur, your birth time planets are responsible means it is your life journey due to planetary situation of your horoscope.");
+                    textViewNoData.setText("Now there is no such planetary position regarding these matters which can present quite nice or quite bad feelings for you. If good or bad results unexpectedly occur this time in 1-2 % cases , your birth time planets are responsible means it is your life journey due to planetary situation of your horoscope.");
                 } else {
                     //textViewNoData.setText("इन मामलों में अभी आपका समय सामान्य ढंग का चल रहा है");
-                    textViewNoData.setText("अभी आसमान में ग्रहों की स्थिति ऐसी नहीं कि इन मामलों में आपके समक्ष खास अच्छी या खास बुरी मनःस्थिति उपस्थित करे। बावजूद इसके 1-2 प्रतिशत जगहों पर यदि इस समय में कोई अच्छी या बुरी बात होती है तो उसके लिए आपके जन्मकालीन ग्रह जिम्मेदार होंगे यानि जन्मकुंडली में उपस्थित ग्रहों के कारण बन रही आपकी जीवनयात्रा में एक मोड़ खास वातावरण बनाएगा।");
+                    textViewNoData.setText("अभी आसमान में ग्रहों की स्थिति ऐसी नहीं कि इन मामलों में आपके समक्ष खास अच्छी या खास बुरी मनःस्थिति उपस्थित करे। बावजूद इसके 1-2 प्रतिशत जगहों पर यदि इस समय में कोई अच्छी या बुरी बात होती है तो उसके लिए आपके जन्मकालीन ग्रह जिम्मेदार होंगे यानि जन्मकुंडली में उपस्थित ग्रहों के कारण बन रही आपकी जीवनयात्रा में खास वातावरण बनाएगा।");
                 }
                 textViewNoData.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(getActivity()).getTextSize());
 
@@ -675,54 +555,30 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                 textViewNoData.setVisibility(View.GONE);
                 recyclerViewYear.setVisibility(View.VISIBLE);
 
-                for (int i = 0; i < resultCategoryList.get(count).getYearResults().size(); i++) {
-                    System.out.println("resultData " + resultCategoryList.get(count).getYearResults().get(i).getDescription());
-                    YearResult movie = new YearResult(resultCategoryList.get(count).getYearResults().get(i).getFeeling(), resultCategoryList.get(count).getYearResults().get(i).getDescription());
+                for (int i = 0; i < resultCategoryList.get(count-1).getYearResults().size(); i++) {
+                    System.out.println("resultData " + resultCategoryList.get(count-1).getYearResults().get(i).getDescription());
+                    YearResult movie = new YearResult(resultCategoryList.get(count-1).getYearResults().get(i).getFeeling(), resultCategoryList.get(count-1).getYearResults().get(i).getDescription());
                     yearResultList.add(movie);
                 }
 
+                yearAdapter.notifyDataSetChanged();
             }
-
             //yearResultList.add(yearResultList);
-            yearAdapter.notifyDataSetChanged();
-            //recyclerViewYear.setAdapter(new YearAdapter(yearResultList));
-//        date.setText(resultCategoryList.get(count).getName());
-//        date.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(getContext()).getTextSize());
-//        if(resultCategoryList.get(count).getFeeling().equalsIgnoreCase("Normal") || resultCategoryList.get(count).getFeeling().equalsIgnoreCase("सामान्य"))
-//            feeling.setTextColor(Color.parseColor("#728FCE")); // Green
-//        if(resultCategoryList.get(count).getFeeling().equalsIgnoreCase("Positive") || resultCategoryList.get(count).getFeeling().equalsIgnoreCase("सकारात्मक"))
-//            feeling.setTextColor(Color.parseColor("#228B22")); // Green
-//        else if(resultCategoryList.get(count).getFeeling().equalsIgnoreCase("Negative") || resultCategoryList.get(count).getFeeling().equalsIgnoreCase("ऋणात्मक"))
-//            feeling.setTextColor(Color.parseColor("#802606")); // Red
-//
-//        feeling.setText(resultCategoryList.get(count).getFeeling());
-//        feeling.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(getContext()).getTextSize());
-//        description.setText(resultCategoryList.get(count).getDescription());
-//        description.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(getContext()).getTextSize());
 
         } catch (Exception e) {
-            e.printStackTrace();
+            textViewNoData.setVisibility(View.VISIBLE);
+            recyclerViewYear.setVisibility(View.GONE);
+            if (languagePreference.getString("language", Constants.Language.ENGLISH.getLanguage()).equals(Constants.Language.ENGLISH.getLanguage())) {
+                textViewNoData.setText("Now there is no such planetary position regarding these matters which can present quite nice or quite bad feelings for you. If good or bad results unexpectedly occur this time in 1-2 % cases , your birth time planets are responsible means it is your life journey due to planetary situation of your horoscope.");
+            } else {
+                textViewNoData.setText("अभी आसमान में ग्रहों की स्थिति ऐसी नहीं कि इन मामलों में आपके समक्ष खास अच्छी या खास बुरी मनःस्थिति उपस्थित करे। बावजूद इसके 1-2 प्रतिशत जगहों पर यदि इस समय में कोई अच्छी या बुरी बात होती है तो उसके लिए आपके जन्मकालीन ग्रह जिम्मेदार होंगे यानि जन्मकुंडली में उपस्थित ग्रहों के कारण बन रही आपकी जीवनयात्रा में खास वातावरण बनाएगा।");
+            }
+
+//            e.printStackTrace();
         }
     }
 
-
-    //    public void getData(int count){
-//        date.setText(resultCategoryList.get(count).getName());
-//        date.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(getContext()).getTextSize());
-//        if(resultCategoryList.get(count).getFeeling().equalsIgnoreCase("Normal") || resultCategoryList.get(count).getFeeling().equalsIgnoreCase("सामान्य"))
-//            feeling.setTextColor(Color.parseColor("#728FCE")); // Green
-//        if(resultCategoryList.get(count).getFeeling().equalsIgnoreCase("Positive") || resultCategoryList.get(count).getFeeling().equalsIgnoreCase("सकारात्मक"))
-//            feeling.setTextColor(Color.parseColor("#228B22")); // Green
-//        else if(resultCategoryList.get(count).getFeeling().equalsIgnoreCase("Negative") || resultCategoryList.get(count).getFeeling().equalsIgnoreCase("ऋणात्मक"))
-//            feeling.setTextColor(Color.parseColor("#802606")); // Red
-//
-//        feeling.setText(resultCategoryList.get(count).getFeeling());
-//        feeling.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(getContext()).getTextSize());
-//        description.setText(resultCategoryList.get(count).getDescription());
-//        description.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(getContext()).getTextSize());
-//    }
     int add = 0;
-
 
 }
 

@@ -2,8 +2,8 @@ package com.gatyatmakjyotish.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,24 +34,32 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        DateCategory obj = dateCategoryArrayList.get(i);
-        viewHolder.feeling.setText(obj.getFeeling());
-        viewHolder.feeling.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
+        try {
+            DateCategory obj = dateCategoryArrayList.get(i);
+            viewHolder.feeling.setText(obj.getFeeling());
+//        viewHolder.feeling.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
+//
+            if (obj.getFeeling().equalsIgnoreCase("Normal") || obj.getFeeling().equalsIgnoreCase("सामान्य"))
+                viewHolder.feeling.setTextColor(Color.parseColor("#728FCE")); // Green
+            else if (obj.getFeeling().equalsIgnoreCase("Positive") || obj.getFeeling().equalsIgnoreCase("सकारात्मक"))
+                viewHolder.feeling.setTextColor(Color.parseColor("#228B22")); // Green
+            else if (obj.getFeeling().equalsIgnoreCase("Negative") || obj.getFeeling().equalsIgnoreCase("ऋणात्मक"))
+                viewHolder.feeling.setTextColor(Color.parseColor("#802606")); // Red
 
-        if(obj.getFeeling().equalsIgnoreCase("Normal") || obj.getFeeling().equalsIgnoreCase("सामान्य"))
-            viewHolder.feeling.setTextColor(Color.parseColor("#728FCE")); // Green
-        else if(obj.getFeeling().equalsIgnoreCase("Positive") || obj.getFeeling().equalsIgnoreCase("सकारात्मक"))
-            viewHolder.feeling.setTextColor(Color.parseColor("#228B22")); // Green
-        else if(obj.getFeeling().equalsIgnoreCase("Negative") || obj.getFeeling().equalsIgnoreCase("ऋणात्मक"))
-            viewHolder.feeling.setTextColor(Color.parseColor("#802606")); // Red
-
-        viewHolder.description.setText(obj.getDescription());
-        viewHolder.description.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
-
+            viewHolder.description.setText(obj.getDescription());
+//        viewHolder.description.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
+//
         if(i==dateCategoryArrayList.size()-1)
         {
             viewHolder.bottom_view.setVisibility(View.VISIBLE);
         }
+        }catch (Exception e){
+
+        }
+        try{
+            viewHolder.feeling.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
+            viewHolder.description.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
+        }catch (Exception e){}
 
 
     }
@@ -61,11 +69,11 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.ViewHolder> {
         return dateCategoryArrayList.size();
     }
 
-    public void setAdapter(List<DateCategory> dateCategoryArrayList) {
-        this.dateCategoryArrayList.clear();
-        this.dateCategoryArrayList.addAll(dateCategoryArrayList);
-        notifyDataSetChanged();
-    }
+//    public void setAdapter(List<DateCategory> dateCategoryArrayList) {
+//        this.dateCategoryArrayList.clear();
+//        this.dateCategoryArrayList.addAll(dateCategoryArrayList);
+//        notifyDataSetChanged();
+//    }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView feeling, description;

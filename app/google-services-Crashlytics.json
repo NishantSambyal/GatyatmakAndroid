@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "707057270731",
+    "project_id": "gatyatmak-1e2d4",
+    "storage_bucket": "gatyatmak-1e2d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707057270731:android:668e4957f31e9ca770004e",
+        "android_client_info": {
+          "package_name": "com.gatyatmakjyotish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707057270731-368qtql82qkm9crnl61jin06ja85cap8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqiDx87H_fqYvxaLZUUutL9n9zLpEfV9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707057270731-368qtql82qkm9crnl61jin06ja85cap8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

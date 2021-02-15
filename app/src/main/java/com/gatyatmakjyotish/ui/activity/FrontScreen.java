@@ -6,41 +6,31 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager.widget.ViewPager;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.gatyatmakjyotish.ModelClass.PublishModel;
 import com.gatyatmakjyotish.R;
 import com.gatyatmakjyotish.constants.Constants;
 import com.gatyatmakjyotish.ui.fragment.FragmentNavigationDrawer;
 import com.gatyatmakjyotish.util.Util;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import hotchemi.android.rate.AppRate;
 
-import static com.gatyatmakjyotish.adapters.AboutAdapter.dailyStatus;
-import static com.gatyatmakjyotish.adapters.AboutAdapter.yearlyStatus;
 import static com.gatyatmakjyotish.constants.Constants.DATE_OF_BIRTH;
 import static com.gatyatmakjyotish.constants.Constants.EMAIL;
 import static com.gatyatmakjyotish.constants.Constants.LANGUAGE;

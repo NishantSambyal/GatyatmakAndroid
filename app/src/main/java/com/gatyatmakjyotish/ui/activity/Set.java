@@ -2,8 +2,8 @@ package com.gatyatmakjyotish.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -12,7 +12,7 @@ import com.gatyatmakjyotish.util.Util;
 
 public class Set extends AppCompatActivity {
     LinearLayout profile, changepassword, font;
-    android.support.v7.widget.Toolbar toolbar;
+    androidx.appcompat.widget.Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

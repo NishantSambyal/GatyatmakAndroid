@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.gatyatmakjyotish">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,10 +19,13 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:largeHeap="true"
         android:hardwareAccelerated="false"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        >
 
-        <activity android:name="com.gatyatmakjyotish.ui.activity.WaitingForLetter"></activity>
-        <activity android:name="com.gatyatmakjyotish.ui.activity.SplashActivity">
+        <activity android:name="com.gatyatmakjyotish.ui.activity.WaitingForLetter"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -40,44 +50,75 @@
         </activity> <!-- <activity android:name=".ui.activity.MainActivity" -->
         <!-- android:launchMode="standard"/> -->
         <activity
-            android:name="com.gatyatmakjyotish.ui.activity.MainActivity"/>
+            android:name="com.gatyatmakjyotish.ui.activity.MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.gatyatmakjyotish.ui.activity.FrontScreen"
+            android:screenOrientation="portrait"
             android:launchMode="standard" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.SignUp" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.SignUp"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.gatyatmakjyotish.ui.activity.DashBoard"
             android:exported="true"
             android:screenOrientation="portrait" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.Language" />
-        <activity android:name="com.gatyatmakjyotish.ui.fragmentBase.Blog" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.OtherServices" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.Payment" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.ForgotPassword" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.UserProfile" />
-        <activity android:name="com.gatyatmakjyotish.ui.fragmentBase.Email_base" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.Set" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.Books" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.ChangeFontSize" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.ChangePassword" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.AboutUs" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.ContactUs" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.ReferEarn" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.Team" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.Marketing" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.PointstoKnow" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.SubscriptionActivity" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.OurMissionActivity" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.UseofApp" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.Cart" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.HoroscopeMatchingActivity" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.Remedy" />
-        <activity android:name="com.gatyatmakjyotish.util.ImageViewer" />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.NotificationActivity" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Language"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.fragmentBase.Blog"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.OtherServices"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Payment"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.ForgotPassword"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.UserProfile"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.fragmentBase.Email_base"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Set"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Books"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.ChangeFontSize"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.ChangePassword"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.AboutUs"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.ContactUs"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.ReferEarn"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Team"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Marketing"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.PointstoKnow"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.SubscriptionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.OurMissionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.UseofApp"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Cart"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.HoroscopeMatchingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.Remedy"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.util.ImageViewer"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.gatyatmakjyotish.ui.activity.NotificationActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name="com.gatyatmakjyotish.ui.activity.Notification"
             android:exported="true"
+            android:screenOrientation="portrait"
             />
-        <activity android:name="com.gatyatmakjyotish.ui.activity.CompareKundali" />
+        <activity android:name="com.gatyatmakjyotish.ui.activity.CompareKundali"
+            android:screenOrientation="portrait"
+            />
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_test_sEFlSto281GZCY" />
@@ -107,11 +148,5 @@
         </receiver>
 
     </application>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

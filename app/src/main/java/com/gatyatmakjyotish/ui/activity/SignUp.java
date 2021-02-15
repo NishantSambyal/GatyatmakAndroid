@@ -5,10 +5,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -30,7 +29,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.gatyatmakjyotish.OnClickListener;
 import com.gatyatmakjyotish.R;
 import com.gatyatmakjyotish.constants.Api;
 import com.gatyatmakjyotish.util.Util;
@@ -42,13 +40,10 @@ import com.google.android.libraries.places.widget.AutocompleteActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 
 import java.text.BreakIterator;
-import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.time.OffsetTime;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -146,29 +141,29 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-                if (et_Name.getText().toString().equalsIgnoreCase("")) {
+                if (et_Name.getText().toString().trim().equalsIgnoreCase("")) {
                     et_Name.setError("name cant be empty!");
-                } else if (et_Dob.getText().toString().equalsIgnoreCase("")) {
+                } else if (et_Dob.getText().toString().trim().equalsIgnoreCase("")) {
                     et_Dob.setError("dob cant be empty!");
-                } else if (Util.checkDateSelection(15,et_Dob.getText().toString(),new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()),"yyyy-MM-dd")) {
+                } else if (Util.checkDateSelection(15,et_Dob.getText().toString().trim(),new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date()),"yyyy-MM-dd")) {
                     Toast.makeText(SignUp.this, "You are too younger to use this app", Toast.LENGTH_LONG).show();
-                } else if (et_Tob.getText().toString().equalsIgnoreCase("")) {
+                } else if (et_Tob.getText().toString().trim().equalsIgnoreCase("")) {
                     et_Tob.setError("tob cant be empty!");
-                } else if (et_Pob.getText().toString().equalsIgnoreCase("")) {
+                } else if (et_Pob.getText().toString().trim().equalsIgnoreCase("")) {
                     et_Pob.setError("district cant be empty!");
-                } else if (et_Loc.getText().toString().equalsIgnoreCase("")) {
+                } else if (et_Loc.getText().toString().trim().equalsIgnoreCase("")) {
                     et_Loc.setError("loc cant be empty!");
-                } else if (et_Mob.getText().toString().equalsIgnoreCase("")) {
+                } else if (et_Mob.getText().toString().trim().equalsIgnoreCase("")) {
                     et_Mob.setError("mob cant be empty!");
-                } else if (et_Password.getText().toString().equalsIgnoreCase("")) {
+                } else if (et_Password.getText().toString().trim().equalsIgnoreCase("")) {
                     et_Password.setError("password cant be empty!");
-                } else if (et_Cpass.getText().toString().equalsIgnoreCase("")) {
+                } else if (et_Cpass.getText().toString().trim().equalsIgnoreCase("")) {
                     et_Cpass.setError("confirm password cant be empty!");
-                } else if (et_Email.getText().toString().equalsIgnoreCase("") || !Patterns.EMAIL_ADDRESS.matcher(et_Email.getText().toString()).matches()) {
+                } else if (et_Email.getText().toString().trim().equalsIgnoreCase("") || !Patterns.EMAIL_ADDRESS.matcher(et_Email.getText().toString()).matches()) {
                     et_Email.setError("invalid email address");
-                } else if (!et_Password.getText().toString().equals(et_Cpass.getText().toString())) {
+                } else if (!et_Password.getText().toString().trim().equals(et_Cpass.getText().toString())) {
                     Toast.makeText(SignUp.this, "password not matching", Toast.LENGTH_LONG).show();
-                } else if (et_Password.getText().toString().length() < 8) {
+                } else if (et_Password.getText().toString().trim().length() < 8) {
                     Toast.makeText(SignUp.this, "password should be of minimum 8 characters", Toast.LENGTH_LONG).show();
                 } else{
                     showConfirmationDialog();
@@ -285,19 +280,18 @@ public class SignUp extends AppCompatActivity {
                     params.put("promo_code", et_promocode.getText().toString().trim());
 
 
-                System.out.println("SignupContentName " +et_Name.getText().toString().trim());
-                System.out.println("SignupContentPassword " +et_Password.getText().toString().trim());
-                System.out.println("SignupContentTime with arrar " +et_Tob.getText().toString().split(" ")[0]+":00");
-                System.out.println("SignupContentTime " +et_Tob.getText().toString());
-                System.out.println("SignupContentPlace " +et_Pob.getText().toString());
-                System.out.println("SignupContentLocation " +et_Loc.getText().toString().trim());
-                System.out.println("SignupContentEmail " +et_Email.getText().toString().trim());
-                System.out.println("SignupContentDOB " +et_Dob.getText().toString().trim());
-                System.out.println("SignupContentGender " +gender);
-                System.out.println("SignupContentMobile " +et_Mob.getText().toString().trim());
+//                System.out.println("SignupContentName " +et_Name.getText().toString().trim());
+//                System.out.println("SignupContentPassword " +et_Password.getText().toString().trim());
+//                System.out.println("SignupContentTime with arrar " +et_Tob.getText().toString().split(" ")[0]+":00");
+//                System.out.println("SignupContentTime " +et_Tob.getText().toString());
+//                System.out.println("SignupContentPlace " +et_Pob.getText().toString());
+//                System.out.println("SignupContentLocation " +et_Loc.getText().toString().trim());
+//                System.out.println("SignupContentEmail " +et_Email.getText().toString().trim());
+//                System.out.println("SignupContentDOB " +et_Dob.getText().toString().trim());
+//                System.out.println("SignupContentGender " +gender);
+//                System.out.println("SignupContentMobile " +et_Mob.getText().toString().trim());
 
                 return params;
-
             }
 
             @Override

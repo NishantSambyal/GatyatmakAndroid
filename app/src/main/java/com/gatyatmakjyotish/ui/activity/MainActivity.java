@@ -2,7 +2,6 @@ package com.gatyatmakjyotish.ui.activity;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.Application;
 import android.app.Dialog;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
@@ -14,10 +13,10 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.service.notification.StatusBarNotification;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.textfield.TextInputLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Patterns;
@@ -38,9 +37,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.crashlytics.android.Crashlytics;
 import com.gatyatmakjyotish.R;
-import com.gatyatmakjyotish.Services.MyFirebaseMessagingService;
 import com.gatyatmakjyotish.constants.Api;
 import com.gatyatmakjyotish.constants.Constants;
 import com.gatyatmakjyotish.ui.fragmentBase.Email_base;
@@ -98,13 +95,6 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         forgot = findViewById(R.id.forgot);
         signup = findViewById(R.id.signup);
-
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        StatusBarNotification[] barNotifications = notificationManager.getActiveNotifications();
-        System.out.println("eyuyuwyuweyeyueyu " +barNotifications.length);
-//        for(StatusBarNotification notification: barNotifications) {
-//            System.out.println("Activtnotification " +notification.getNotification());
-//        }
 
         sharedPreferencesNotification = getSharedPreferences(NOTIFICATION_PREF, MODE_PRIVATE);
 

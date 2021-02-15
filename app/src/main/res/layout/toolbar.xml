@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v7.widget.Toolbar
+<androidx.appcompat.widget.Toolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:id="@+id/toolbar"
@@ -19,4 +19,4 @@
         android:textColor="@android:color/white"
         android:textSize="15sp"/>
 
-</android.support.v7.widget.Toolbar>
+</androidx.appcompat.widget.Toolbar>
