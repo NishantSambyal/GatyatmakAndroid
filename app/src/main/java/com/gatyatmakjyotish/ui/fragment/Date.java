@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +31,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.gatyatmakjyotish.ModelClass.days_pkg.DaysPlanetModel;
 import com.gatyatmakjyotish.R;
 import com.gatyatmakjyotish.adapters.DateAdapter;
 import com.gatyatmakjyotish.constants.Api;
@@ -36,6 +39,7 @@ import com.gatyatmakjyotish.constants.Constants;
 import com.gatyatmakjyotish.pojo.DateCategory;
 import com.gatyatmakjyotish.ui.activity.SubscriptionActivity;
 import com.gatyatmakjyotish.util.SaveTextSize;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,7 +58,7 @@ import static com.gatyatmakjyotish.constants.Constants.LOGIN_PREF;
 import static com.gatyatmakjyotish.ui.fragment.Publish.mypreference;
 
 public class Date extends Fragment {
-    SharedPreferences sharedPreferences, languagePreference;
+    SharedPreferences sharedPreferences, languagePreference, sharedPrefsLogin;
     LinearLayout layoutNoData;
     private TextView tv_feeling,horoscope,tv_date,tv_no_data;
     private ProgressDialog progressDialog;
@@ -91,6 +95,7 @@ public class Date extends Fragment {
         recyclerView = v.findViewById(R.id.recycler_view);
         //search = v.findViewById(R.id.search_button);
         //cancel = v.findViewById(R.id.cancel_button);
+        sharedPrefsLogin = getActivity().getSharedPreferences(LOGIN_PREF, Context.MODE_PRIVATE);
 
         setPreference();
         currentDate();
@@ -245,9 +250,10 @@ public class Date extends Fragment {
         progressDialog.show();
         sharedPreferences = context.getSharedPreferences(LOGIN_PREF, MODE_PRIVATE);
         languagePreference = context.getSharedPreferences("language", MODE_PRIVATE);
+
         RequestQueue queue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                DATE_API = Api.BASE_URL + "daily-result?user_id=" + sharedPreferences.getString(ID, null)
+                DATE_API = Api.BASE_URL + "daily-result?user_id=" + sharedPrefsLogin.getString(ID, null)
                         + "&result_date=" + date, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -256,12 +262,17 @@ public class Date extends Fragment {
                     progressDialog.dismiss();
                 try {
                     dateCategoryList.clear();
+
+
                     JSONObject jsonObject = new JSONObject(response);
                     boolean error = jsonObject.getBoolean("error");
                     if(!error){
+                        DaysPlanetModel model = new Gson().fromJson(response.toString(), DaysPlanetModel.class);
                         layoutNoData.setVisibility(View.GONE);
-                        setIsPaid(jsonObject.getInt("is_paid"));
-                        JSONArray  jsonArray = jsonObject.getJSONArray("object");
+//                        setIsPaid(jsonObject.getInt("is_paid"));
+                        setIsPaid(model.getIsPaid());
+
+                        /*JSONArray  jsonArray = jsonObject.getJSONArray("object");
                         if(languagePreference.getString("language", Constants.Language.ENGLISH.getLanguage()).equals(Constants.Language.
                                 ENGLISH.getLanguage())) {
                             for (int i = 0; i < jsonArray.length(); i++) {
@@ -278,8 +289,11 @@ public class Date extends Fragment {
                                     dateCategoryList.add(new DateCategory(object.getString("feeling_hindi"), object.getString("description_hindi")));
                                 }
                             }
-                        }
-                        recyclerView.setAdapter(new DateAdapter(dateCategoryList));
+                        }*/
+
+//                        recyclerView.setAdapter(new DateAdapter(dateCategoryList));
+                        recyclerView.setAdapter(new DateAdapter(model.getObject()));
+
                     }
                     else{
                         setIsPaid(1);

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.gatyatmakjyotish.ModelClass.days_pkg.ObjectItem;
 import com.gatyatmakjyotish.R;
 import com.gatyatmakjyotish.pojo.DateCategory;
 import com.gatyatmakjyotish.util.SaveTextSize;
@@ -19,11 +20,17 @@ import java.util.List;
 
 public class DateAdapter extends RecyclerView.Adapter<DateAdapter.ViewHolder> {
     private Context context;
-    private List<DateCategory> dateCategoryArrayList = new ArrayList<>();
+//    private List<DateCategory> dateCategoryArrayList = new ArrayList<>();
+    private List<ObjectItem> dateCategoryArrayList = new ArrayList<>();
 
-    public DateAdapter(List<DateCategory> dateCategoryArrayList){
+
+//    public DateAdapter(List<DateCategory> dateCategoryArrayList){
+//        this.dateCategoryArrayList = dateCategoryArrayList;
+//    }
+    public DateAdapter(List<ObjectItem> dateCategoryArrayList){
         this.dateCategoryArrayList = dateCategoryArrayList;
     }
+
 
     @NonNull
     @Override
@@ -35,8 +42,10 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         try {
-            DateCategory obj = dateCategoryArrayList.get(i);
+            ObjectItem obj = dateCategoryArrayList.get(i);
             viewHolder.feeling.setText(obj.getFeeling());
+            viewHolder.description.setText(obj.getDescription());
+
 //        viewHolder.feeling.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
 //
             if (obj.getFeeling().equalsIgnoreCase("Normal") || obj.getFeeling().equalsIgnoreCase("सामान्य"))
@@ -46,21 +55,16 @@ public class DateAdapter extends RecyclerView.Adapter<DateAdapter.ViewHolder> {
             else if (obj.getFeeling().equalsIgnoreCase("Negative") || obj.getFeeling().equalsIgnoreCase("ऋणात्मक"))
                 viewHolder.feeling.setTextColor(Color.parseColor("#802606")); // Red
 
-            viewHolder.description.setText(obj.getDescription());
 //        viewHolder.description.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
 //
-        if(i==dateCategoryArrayList.size()-1)
-        {
-            viewHolder.bottom_view.setVisibility(View.VISIBLE);
-        }
-        }catch (Exception e){
+//        if(i==dateCategoryArrayList.size()-1)
+//            viewHolder.bottom_view.setVisibility(View.VISIBLE);
 
-        }
-        try{
-            viewHolder.feeling.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
-            viewHolder.description.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
         }catch (Exception e){}
-
+//        try{
+//            viewHolder.feeling.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
+//            viewHolder.description.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
+//        }catch (Exception e){}
 
     }
 
