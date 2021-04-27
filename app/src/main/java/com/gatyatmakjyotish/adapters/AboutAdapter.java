@@ -65,7 +65,9 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.textView.setText(publishModelList.get(i));
+
+        String after = publishModelList.get(i).replaceAll("\\s{2,}", " ").trim();
+        viewHolder.textView.setText(after);
         viewHolder.textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
         if(context instanceof OurMissionActivity)
             viewHolder.imageView.setVisibility(View.VISIBLE);

@@ -80,14 +80,14 @@ public class HoroscopeMatchingActivity extends AppCompatActivity {
         et_MaleDob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.setUpDatePicker(et_MaleDob, HoroscopeMatchingActivity.this).show();
+                Util.setUpDatePickerDOB(et_MaleDob, HoroscopeMatchingActivity.this).show();
             }
         });
 
         et_FemaleDob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.setUpDatePicker(et_FemaleDob, HoroscopeMatchingActivity.this).show();
+                Util.setUpDatePickerDOB(et_FemaleDob, HoroscopeMatchingActivity.this).show();
             }
         });
 

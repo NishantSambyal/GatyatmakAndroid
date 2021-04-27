@@ -37,7 +37,7 @@
 
     </LinearLayout>
 
-    <com.codesgood.views.JustifiedTextView
+    <TextView
         android:id="@+id/tv_feeling"
         android:layout_width="match_parent"
         android:lineSpacingExtra="5dp"
@@ -54,14 +54,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <com.codesgood.views.JustifiedTextView
+            <TextView
         android:layout_width="match_parent"
         android:lineSpacingExtra="5dp"
         android:fontFamily="@font/helvetica"
         android:textColor="@color/colorTextColor"
         android:layout_marginTop="10dp"
         android:id="@+id/tv_description"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+                />
 
         </LinearLayout>
     </ScrollView>

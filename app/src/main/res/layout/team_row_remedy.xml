@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_height="wrap_content">
 
-    <com.codesgood.views.JustifiedTextView
+    <TextView
         android:id="@+id/team_text"
         android:layout_width="match_parent"
         android:lineSpacingExtra="5dp"
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.codesgood.views.JustifiedTextView
+    <TextView
         android:id="@+id/team_name"
         android:layout_width="match_parent"
         android:lineSpacingExtra="5dp"

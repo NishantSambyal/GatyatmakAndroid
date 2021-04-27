@@ -106,7 +106,7 @@ public class CompareKundali extends AppCompatActivity {
         et_Dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.setUpDatePicker(et_Dob, CompareKundali.this).show();
+                Util.setUpDatePickerDOB(et_Dob, CompareKundali.this).show();
             }
         });
         et_Dob.addTextChangedListener(new TextWatcher() {
@@ -134,7 +134,7 @@ public class CompareKundali extends AppCompatActivity {
         et_fDob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.setUpDatePicker(et_fDob, CompareKundali.this).show();
+                Util.setUpDatePickerDOB(et_fDob, CompareKundali.this).show();
             }
         });
         et_fDob.addTextChangedListener(new TextWatcher() {

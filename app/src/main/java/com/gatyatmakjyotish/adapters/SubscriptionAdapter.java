@@ -37,6 +37,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.gatyatmakjyotish.constants.Constants.LOGIN_PREF;
+import static com.gatyatmakjyotish.constants.Constants.PROMOCODE;
 import static com.gatyatmakjyotish.ui.activity.Books.mypreference;
 
 public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapter.ViewHolder> {
@@ -44,7 +46,7 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
     private Context context;
     public static Boolean dailyStatus = false;
     public static Boolean yearlyStatus = false;
-    SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences, loginSharedPreferences;
 
 
     public SubscriptionAdapter(List<String> publishModelList) {
@@ -56,11 +58,11 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         this.context = viewGroup.getContext();
+        loginSharedPreferences = context.getSharedPreferences(LOGIN_PREF, Context.MODE_PRIVATE);
         sharedPreferences = context.getSharedPreferences(mypreference, Context.MODE_PRIVATE);
+
         return new ViewHolder(LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.row_remedy_subscription, viewGroup, false));
-
-
     }
 
     @Override
@@ -228,6 +230,23 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
 
     }
 
+/*    public void shareApp(){
+        try {
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name");
+            *//*String shareMessage= "\nI recommend you this application, download this for accurate\n" +
+                    "time-bound  day-to-day and yearly forecast for free and get points for\n" +
+                    "availing services of Gatyatmak Jyotish, a new branch in Astrology.\n\n";*//*
+            String shareMessage= "\n"+context.getString(R.string.share_app)+"\n\n";
+            shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+            context.startActivity(Intent.createChooser(shareIntent, "choose one"));
+        } catch(Exception e) {
+            //e.toString();
+        }
+    }*/
+
     public void shareApp(){
         try {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
@@ -236,7 +255,7 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
             /*String shareMessage= "\nI recommend you this application, download this for accurate\n" +
                     "time-bound  day-to-day and yearly forecast for free and get points for\n" +
                     "availing services of Gatyatmak Jyotish, a new branch in Astrology.\n\n";*/
-            String shareMessage= "\n"+context.getString(R.string.share_app)+"\n\n";
+            String shareMessage= "\n"+context.getResources().getString(R.string.share_app)+"\n\n"+"Use Promo Code " +loginSharedPreferences.getString(PROMOCODE,"")+"\n\n";
             shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
             context.startActivity(Intent.createChooser(shareIntent, "choose one"));
@@ -244,6 +263,7 @@ public class SubscriptionAdapter extends RecyclerView.Adapter<SubscriptionAdapte
             //e.toString();
         }
     }
+
 
 
     @Override

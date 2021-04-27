@@ -2,7 +2,8 @@ package com.gatyatmakjyotish.constants;
 
 
 public class Api {
-    public static final String BASE_URL = "http://astro.nuagedigitech.com/api/";
+    public static final String BASE_URL = "http://vivahmanglam.com/astro/api/";
+//    public static final String BASE_URL = "http://astro.nuagedigitech.com/api/";
 //    public static final String BASE_URL = "http://nuagedigitech.com/astro_test/api/";
     public static final String USER = "user/";
     public static final String CHANGE_PASSWORD = "/change-password";

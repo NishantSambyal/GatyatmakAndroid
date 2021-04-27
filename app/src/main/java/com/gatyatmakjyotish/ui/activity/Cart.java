@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
 import android.text.Html;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +29,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.gatyatmakjyotish.BuildConfig;
 import com.gatyatmakjyotish.ModelClass.PublishModel;
 import com.gatyatmakjyotish.R;
 import com.gatyatmakjyotish.adapters.CartAdapter;
@@ -57,6 +59,7 @@ import static com.gatyatmakjyotish.constants.Constants.ID;
 import static com.gatyatmakjyotish.constants.Constants.LOGIN_PREF;
 import static com.gatyatmakjyotish.constants.Constants.MOBILE;
 import static com.gatyatmakjyotish.constants.Constants.NAME;
+import static com.gatyatmakjyotish.constants.Constants.PROMOCODE;
 import static com.gatyatmakjyotish.constants.Constants.WALLET_POINT;
 
 public class Cart extends AppCompatActivity implements PaymentResultListener {
@@ -81,9 +84,13 @@ public class Cart extends AppCompatActivity implements PaymentResultListener {
     Button btnSubmit;
     EditText et_MaleName, et_MaleDob, et_MaleTob, et_MalePob, et_FemaleName, et_FemaleDob, et_FemaleTob, et_FemalePob;
 
-    TextView tv_name, tv_email, tv_gatyatmakpoints, tv_subtotal, tv_tax_amount, tv_final_total, tv_user_wallet, tv_total_amount;
+    TextView tv_gatyatmakpoints_share, tv_name, tv_email, tv_gatyatmakpoints, tv_subtotal, tv_tax_amount, tv_final_total, tv_user_wallet, tv_total_amount;
     float final_total = 0;
-    int AUTOCOMPLETE_REQUEST_CODE = 1, subtotal = 0, gst = 18, p_width = 0, amount_percentage;
+    int AUTOCOMPLETE_REQUEST_CODE = 1;
+    float subtotal = 0;
+    int gst = 18;
+    int p_width = 0;
+    float amount_percentage;
     float wallet_points = 0,tv_finalwallet_amount = 0;
     private Boolean referenceStatus = false;
     private String cartType = "";
@@ -105,6 +112,7 @@ public class Cart extends AppCompatActivity implements PaymentResultListener {
         tv_price = findViewById(R.id.tv_price);
         button = findViewById(R.id.button);
         recyclerView = findViewById(R.id.recycler_cart);
+
         Util.setLinearLayoutManagerNestedScroll(this, recyclerView);
         imageView = findViewById(R.id.image_cart);
         empty_cart = findViewById(R.id.cart_empty);
@@ -197,10 +205,14 @@ public class Cart extends AppCompatActivity implements PaymentResultListener {
         toolbar = findViewById(R.id.toolbar);
         Util.setupToolbar(this, toolbar, "Order Details");
 
+        sharedPreferences = getSharedPreferences(mypreference, Context.MODE_PRIVATE);
+        loginSharedPreferences = getSharedPreferences(LOGIN_PREF, Context.MODE_PRIVATE);
+
         float tax = 0;
 
        // loginSharedPreferences = getSharedPreferences(LOGIN_PREF, Context.MODE_PRIVATE);
 
+        tv_gatyatmakpoints_share = findViewById(R.id.tv_gatyatmakpoints_share);
         tv_name = findViewById(R.id.tv_name);
         tv_email = findViewById(R.id.tv_email);
         tv_email.setVisibility(View.GONE);
@@ -215,6 +227,7 @@ public class Cart extends AppCompatActivity implements PaymentResultListener {
         cart_cancel = findViewById(R.id.btn_cancel);
 
         subtotal = calculateTotal();
+
         //tax = (subtotal * gst)/100;
 
         //final_total = subtotal + tax;
@@ -222,9 +235,21 @@ public class Cart extends AppCompatActivity implements PaymentResultListener {
         //editor = loginSharedPreferences.edit();
 
         wallet_points = Float.parseFloat(loginSharedPreferences.getString(WALLET_POINT, "0"));
-        amount_percentage = (subtotal*50)/100;
+        amount_percentage = (wallet_points*50)/100;
+        float half_of_subtotal = (subtotal*50)/100;
+//        amount_percentage = (subtotal*50)/100;
 
-        if(wallet_points >= amount_percentage){
+        if (amount_percentage <= half_of_subtotal){
+            final_total = subtotal - amount_percentage;
+            tv_finalwallet_amount = wallet_points = amount_percentage;
+            tv_user_wallet.setText(tv_finalwallet_amount+"");
+        }else {
+            final_total = subtotal - half_of_subtotal;
+            tv_finalwallet_amount = wallet_points = half_of_subtotal;
+            tv_user_wallet.setText(tv_finalwallet_amount+"");
+        }
+
+        /*if(wallet_points >= amount_percentage){
             wallet_points = wallet_points - amount_percentage;
             final_total = subtotal - amount_percentage;
             tv_finalwallet_amount = amount_percentage;
@@ -239,20 +264,29 @@ public class Cart extends AppCompatActivity implements PaymentResultListener {
                 tv_user_wallet.setText("-"+tv_finalwallet_amount+"");
             wallet_points = 0;
         }
-
+        */
         float gst_amount = (final_total*gst)/100;
-       // final_total = (final_total*gst)/100;
 
         if(sharedPreferences.getBoolean("dailyStatus",false) || sharedPreferences.getBoolean("yearlyStatus",false))
             tv_name.setText(loginSharedPreferences.getString(NAME, ""));
 
-        //tv_email.setText(loginSharedPreferences.getString(EMAIL, ""));
         tv_gatyatmakpoints.setText(loginSharedPreferences.getString(WALLET_POINT, "0"));
         tv_subtotal.setText(subtotal+"");
         tv_final_total.setText((final_total)+"");
         tv_tax_amount.setText(gst_amount+"");
         final_total = final_total + gst_amount;
-        tv_total_amount.setText(final_total+"");
+        String s_final_total = String.format(java.util.Locale.US,"%.2f", final_total);
+        tv_total_amount.setText(s_final_total+"");
+
+        try{
+            if (!TextUtils.isEmpty(et_Name.getText().toString().trim())){
+                tv_name.setText(et_Name.getText().toString());
+            }else {
+                tv_name.setText(loginSharedPreferences.getString(NAME, ""));
+            }
+        }catch (Exception e){
+            tv_name.setText(loginSharedPreferences.getString(NAME, ""));
+        }
 
         cart_ok.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -265,6 +299,12 @@ public class Cart extends AppCompatActivity implements PaymentResultListener {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        tv_gatyatmakpoints_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareApp();
             }
         });
 
@@ -538,7 +578,9 @@ public class Cart extends AppCompatActivity implements PaymentResultListener {
 
             //options.put("amount", calculateTotal() * 100);
           //  options.put("amount", final_total * 100);
-            options.put("amount", 1 * 100);
+//            options.put("amount", 1 * 100);
+            options.put("amount", final_total * 100);
+
 
             JSONObject preFill = new JSONObject();
             preFill.put("email", loginSharedPreferences.getString(EMAIL, ""));
@@ -794,6 +836,22 @@ public class Cart extends AppCompatActivity implements PaymentResultListener {
     }
 
 
+    public void shareApp(){
+        try {
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name");
+            /*String shareMessage= "\nI recommend you this application, download this for accurate\n" +
+                    "time-bound  day-to-day and yearly forecast for free and get points for\n" +
+                    "availing services of Gatyatmak Jyotish, a new branch in Astrology.\n\n";*/
+            String shareMessage= "\n"+getString(R.string.share_app)+"\n\n"+"Use Promo Code " +loginSharedPreferences.getString(PROMOCODE,"")+"\n\n";
+            shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+            startActivity(Intent.createChooser(shareIntent, "choose one"));
+        } catch(Exception e) {
+            //e.toString();
+        }
+    }
 
 
 

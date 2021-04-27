@@ -57,11 +57,11 @@ public class Publish extends Fragment {
     }
 
     private void setAdapter() {
-        recyclerView.setAdapter(new RemedyRecyclerAdpter(makeList(), onClickListener));
+        recyclerView.setAdapter(new RemedyRecyclerAdpter(makeList(), onClickListener, false));
     }
 
     private void setAdapter1() {
-        recyclerView1.setAdapter(new RemedyRecyclerAdpter(makeList1(), onClickListener));
+        recyclerView1.setAdapter(new RemedyRecyclerAdpter(makeList1(), onClickListener, true));
     }
 
 
@@ -73,11 +73,6 @@ public class Publish extends Fragment {
         int title[] = {R.string.title_book1, R.string.title_book2};
         int[] prices = {400, 400};
 
-        //int images[] = {R.drawable.book, R.drawable.book_sangeeta, R.drawable.book, R.drawable.book_sangeeta, R.drawable.book};
-        //int description[] = {R.string.pubb1, R.string.pubb2, R.string.service5, R.string.service6, R.string.service7};
-        //int title[] = {R.string.title_book1, R.string.title_book2, R.string.title_service5, R.string.title_service6, R.string.title_service7};
-
-
         for (int i = 0; i < images.length; i++) {
             publishList.add(new PublishModel(description[i], images[i], false, title[i], prices[i]));
         }
@@ -88,9 +83,6 @@ public class Publish extends Fragment {
 
     public List<PublishModel> makeList1() {
         publishList = new ArrayList<>();
-        //int images[] = {R.drawable.book, R.drawable.book_sangeeta};
-        //int description[] = {R.string.pubb1, R.string.pubb2};
-        //int title[] = {R.string.title_book1, R.string.title_book2};
 
         int images[] = {R.drawable.ebookimg, R.drawable.ebookimg1, R.drawable.ebookimg2};
         int description[] = {R.string.service5, R.string.service6, R.string.service7};

@@ -41,7 +41,7 @@
 
     </RelativeLayout>
 
-    <com.codesgood.views.JustifiedTextView
+    <TextView
         android:layout_width="match_parent"
         android:id="@+id/tv_date"
         android:textColor="@color/colorPrimaryDark"
@@ -65,7 +65,7 @@
 
 
 
-    <com.codesgood.views.JustifiedTextView
+    <TextView
         android:id="@+id/tv_no_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

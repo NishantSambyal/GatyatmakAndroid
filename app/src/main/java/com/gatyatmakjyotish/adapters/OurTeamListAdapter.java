@@ -38,7 +38,9 @@ public class OurTeamListAdapter extends RecyclerView.Adapter<OurTeamListAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         TeamCategory team = teamCategories.get(position);
-        viewHolder.team_text.setText(team.getDesc());
+
+        String after = team.getDesc().replaceAll("\\s{2,}", " ").trim();
+        viewHolder.team_text.setText(after);
         viewHolder.team_text.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
         viewHolder.team_image.setImageResource(team.getImageId());
         viewHolder.team_name.setText(team.getName());

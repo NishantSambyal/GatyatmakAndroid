@@ -13,6 +13,11 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.service.notification.StatusBarNotification;
+
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.app.AppCompatActivity;
@@ -151,22 +156,6 @@ public class MainActivity extends AppCompatActivity {
             res.updateConfiguration(conf, dm);
         }
 
-
-        /*SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("language", null);
-        editor.apply();
-
-        System.out.println("LanguageSelection " +getSharedPreferences("language", MODE_PRIVATE).getString("language", null));
-        */
-
-
-        //sharedPreferences = getApplicationContext().getSharedPreferences(LOGIN_PREF, 0); // 0 - for private mode
-      /*  if(sharedPreferences.getString(TOKEN, null) != null) {
-            //Intent intent = new Intent(getApplicationContext(), DashBoard.class);
-            Intent intent = new Intent(getApplicationContext(), FrontScreen.class);
-            startActivity(intent);
-            finish();
-        }*/
         sharedPreferences = getSharedPreferences(LOGIN_PREF, MODE_PRIVATE);
 
         editor = sharedPreferences.edit();
@@ -259,8 +248,9 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.dismiss();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    if (jsonObject.optBoolean("status"))
-                        Toast.makeText(MainActivity.this, ""+jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+                    if (jsonObject.optBoolean("status")) {
+//                        Toast.makeText(MainActivity.this, "" + jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+                    }
                     builder.dismiss();
                     //Toast.makeText(MainActivity.this, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
@@ -278,8 +268,8 @@ public class MainActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 if (progressDialog != null && progressDialog.isShowing())
                     builder.dismiss();
-               // Toast.makeText(MainActivity.this, "Password reset mail is sent to your email", Toast.LENGTH_SHORT).show();
-                  alertdialog();
+                Toast.makeText(MainActivity.this, "Request Failed!!", Toast.LENGTH_SHORT).show();
+//                  alertdialog();
                 // Toast.makeText(MainActivity.this, ""+, Toast.LENGTH_SHORT).show();
                 System.out.println("error "+error.getMessage());
                 progressDialog.dismiss();
@@ -308,6 +298,94 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Please wait...");
         progressDialog.show();
+
+
+        AndroidNetworking.post(Api.LOGIN_API)
+                .addBodyParameter("email", emailStr)
+                .addBodyParameter("password", passwordStr)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject jsonObject) {
+                        progressDialog.dismiss();
+                        try {
+                            boolean status = jsonObject.getBoolean("status");
+                            if (status) {
+                                JSONObject userInfo = jsonObject.getJSONObject("user_info");
+                                String token = jsonObject.getString("token");
+                                String name = userInfo.getString("name");
+                                String place_of_birth = userInfo.getString("place_of_birth");
+                                String currenPlace = userInfo.getString("current_place");
+                                String email = userInfo.getString("email");
+                                String gender = userInfo.getString("gender");
+                                String email_verified_at = userInfo.getString("email_verified_at");
+                                String id = userInfo.getString("id");
+                                String wallet_point = userInfo.getString("wallet_point");
+                                String promo_code = userInfo.getString("promo_code");
+                                String date_of_birth = userInfo.getString("date_of_birth");
+                                String time_of_birth = userInfo.getString("time_of_birth");
+                                String mobile = userInfo.getString("mobile");
+                                String letter = userInfo.getString("letter");
+
+                        /*if(email_verified_at != "null"){
+                            Util.showDialog(MainActivity.this, "Login Message", "Please Verify Email First", false, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                        }*/
+
+                                editor.putBoolean("KEY_NAME", true);
+                                editor.putString(TOKEN, token);
+                                editor.putString(NAME, name);
+                                editor.putString(PLACE_OF_BIRTH, place_of_birth);
+                                editor.putString(CURRENT_PLACE, currenPlace);
+                                editor.putString(EMAIL, email);
+                                editor.putString(PASSWORD, passwordStr);
+                                editor.putString(EMAIL_VERIFIED_AT, email_verified_at);
+                                editor.putString(ID, id);
+                                editor.putString(WALLET_POINT,wallet_point);
+                                //editor.putString(WALLET_POINT,"50.00");
+                                editor.putString(PROMOCODE,promo_code);
+                                editor.putString(DATE_OF_BIRTH, date_of_birth);
+                                editor.putString(GENDER, gender);
+                                editor.putString(TIME_OF_BIRTH, time_of_birth);
+                                editor.putString(MOBILE, mobile);
+                                editor.apply();
+
+                                if(letter != "null") {
+                                    finish();
+                                    Intent intentDashboard = new Intent(getApplicationContext(), com.gatyatmakjyotish.ui.activity.FrontScreen.class);
+                                    startActivity(intentDashboard);
+
+                                }
+                                else {
+                                    finish();
+                                    Intent intent = new Intent(getApplicationContext(), Email_base.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                }
+
+                            } else {
+                                if (inputPassword != null)
+                                    inputPassword.setError(jsonObject.getString("message"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        progressDialog.dismiss();
+                    }
+                });
+
+
+/*
         RequestQueue queue = Volley.newRequestQueue(context);
         StringRequest sr = new StringRequest(Request.Method.POST, Api.LOGIN_API, new Response.Listener<String>() {
             @Override
@@ -332,14 +410,14 @@ public class MainActivity extends AppCompatActivity {
                         String mobile = userInfo.getString("mobile");
                         String letter = userInfo.getString("letter");
 
-                        /*if(email_verified_at != "null"){
+                        *//*if(email_verified_at != "null"){
                             Util.showDialog(MainActivity.this, "Login Message", "Please Verify Email First", false, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
                                 }
                             });
-                        }*/
+                        }*//*
 
                         editor.putBoolean("KEY_NAME", true);
                         editor.putString(TOKEN, token);
@@ -398,7 +476,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         };
-        queue.add(sr);
+        queue.add(sr);*/
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

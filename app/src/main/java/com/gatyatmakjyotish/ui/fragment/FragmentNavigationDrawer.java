@@ -45,6 +45,7 @@ import static com.gatyatmakjyotish.constants.Constants.EMAIL;
 import static com.gatyatmakjyotish.constants.Constants.LOGIN_PREF;
 import static com.gatyatmakjyotish.constants.Constants.MOBILE;
 import static com.gatyatmakjyotish.constants.Constants.NAME;
+import static com.gatyatmakjyotish.constants.Constants.NOTIFICATION_PREF;
 import static com.gatyatmakjyotish.constants.Constants.PROMOCODE;
 import static com.gatyatmakjyotish.constants.Constants.WALLET_POINT;
 public class FragmentNavigationDrawer extends Fragment {
@@ -282,7 +283,20 @@ rate.setOnClickListener(new View.OnClickListener(){
                             sharedPreferences = getActivity().getSharedPreferences(LOGIN_PREF, MODE_PRIVATE);
                             editor = sharedPreferences.edit();
                             editor.clear();
-                            editor.apply();
+                            editor.commit();
+
+                            SharedPreferences sharedPreferences1 = getActivity().getSharedPreferences(NOTIFICATION_PREF, MODE_PRIVATE);
+                            SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+                            editor1.clear();
+                            editor1.commit();
+
+                            SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("mypref", MODE_PRIVATE);
+                            SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+                            editor2.clear();
+                            editor2.commit();
+
+
+
                             /*sharedPreferences = getActivity().getSharedPreferences("language", MODE_PRIVATE);
                             editor = sharedPreferences.edit();
                             editor.clear();

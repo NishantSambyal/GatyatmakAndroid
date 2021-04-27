@@ -11,7 +11,7 @@
         android:src="@drawable/ourmissiontrans"
         android:visibility="gone"/>
 
-    <com.codesgood.views.JustifiedTextView
+    <TextView
         android:id="@+id/textview"
         android:layout_width="match_parent"
         android:lineSpacingExtra="5dp"

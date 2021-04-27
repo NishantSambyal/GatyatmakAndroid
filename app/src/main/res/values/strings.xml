@@ -54,7 +54,7 @@
     <string name="OtherServices">Other Services</string>
     <string name="PaymentDetails">Payment Details</string>
     <string name="Blog">Blog</string>
-    <string name="Contactus">Contact Us</string>
+    <string name="Contactus">Contact us</string>
     <string name="aboutus">About us</string>
     <string name="rateUs">Rate us</string>
     <string name="logout">Logout</string>
@@ -148,8 +148,8 @@
     <string name="service1">1. Gatyatmak Horoscope – You can get your Horoscope in English by providing us your date, time and place of birth. Mr. VidyaSagarMahtha, the father of ‘GatyatmakJyotish’, has formulated calculations which have made it possible to sketch authentic life-graphs showing ups/downs and negative/positive circumstances of any individual’s life. Through software-generated life-graphs with proper descriptions, we are able to provide our predictions with high level of accuracy. \u20B9 800</string>
 
 
-    <string name="service2">2. Horoscope Matching – Matching horoscopes before marriage is an old tradition in India.However we do not follow the Indian astrology system which only correlates Moon andMars in their horoscopes. Our system correlates all planets with one another to detect and take precautions against any adversity in future. We provide complete information regarding the horoscope matching and also provide a clear picture about whether the match is good or not. Moreover, we also offer proper advice to overcome the adversities, if possible. \u20B9 400</string>
-    <string name="service3">3. Jyotish Prediction – GatyatmakJyotish is also famous for offering trustworthy Jyotish Prediction to the clients. We offer different types of predictions which have become possible due to our consistent tedious research work for over 50 years. On topics ranging across education, career, marriage, and health, we provide accurate predictions and consultations.\u20B9 400</string>
+    <string name="service2">2. Horoscope Matching – Matching horoscopes before marriage is an old tradition in India.However we do not follow the Indian astrology system which only correlates Moon andMars in their horoscopes. Our system correlates all planets with one another to detect and take precautions against any adversity in future. We provide complete information regarding the horoscope matching and also provide a clear picture about whether the match is good or not. Moreover, we also offer proper advice to overcome the adversities, if possible. \u20B9 800</string>
+    <string name="service3">3. Jyotish Prediction – GatyatmakJyotish is also famous for offering trustworthy Jyotish Prediction to the clients. We offer different types of predictions which have become possible due to our consistent tedious research work for over 50 years. On topics ranging across education, career, marriage, and health, we provide accurate predictions and consultations.\u20B9 800</string>
 
     <!-- <string-array name="related">
          <item>Health</item>
@@ -158,10 +158,10 @@
          <item>Finance</item>
          <item>Marriage </item>
      </string-array>-->
-    <string name="service4">4. Astrological Remedies – We also provide Astrological Remedies to help you extract maximum benefits from benevolent planets andminimize bad effects of malefic planets. For example, if Moon is one’s unfavourable planet, one should sow tiny healthy plants at home, donate money or objects to orphanage and try to use white or orange colours as much as possible to escape or minimize its bad effects. Besides this, one can get a silver ring or locket forged during an auspicious two-hour period on a Full Moon day and wear it. For other planets, we offer consultation of similar procedures which can be followed. \u20B9 400</string>
-    <string name="service5">(a). Falit Jyotish : Kitna Sach Kitna Jhuth – This ebook is written by Mr. Vidya Sagar Mahtha, the father of ‘GatyatmakJyotish’. In this book, he has expressed deep concern over superstitions and illusions in Indian astrology andalso suggested the ways for eradication of such practices. \u20B9 200/-</string>
-    <string name="service6">(b). Gatyatmak Dasha Paddhati : Grahon Ka Prabhav – Written by Mrs. Sangita Puri, this ebook details the research and foundation of Gatyatmak Jyotish, through which accurate predictions are possible. \u20B9 200/-</string>
-    <string name="service7">(c). Gatyatmak Jharokhe se jyotish – The ebook \'Gatyatmak Jharokhe Se Jyotish\' is written by Mrs. Sangita Puri in which dynamic form of astrology has been described well to make common people understand easily. \u20B9 200/-</string>
+    <string name="service4">4. Astrological Remedies – We also provide Astrological Remedies to help you extract maximum benefits from benevolent planets andminimize bad effects of malefic planets. For example, if Moon is one’s unfavourable planet, one should sow tiny healthy plants at home, donate money or objects to orphanage and try to use white or orange colours as much as possible to escape or minimize its bad effects. Besides this, one can get a silver ring or locket forged during an auspicious two-hour period on a Full Moon day and wear it. For other planets, we offer consultation of similar procedures which can be followed. \u20B9 800</string>
+    <string name="service5">(a). Falit Jyotish : Kitna Sach Kitna Jhuth – This ebook is written by Mr. Vidya Sagar Mahtha, the father of ‘GatyatmakJyotish’. In this book, he has expressed deep concern over superstitions and illusions in Indian astrology andalso suggested the ways for eradication of such practices.</string>
+    <string name="service6">(b). Gatyatmak Dasha Paddhati : Grahon Ka Prabhav – Written by Mrs. Sangita Puri, this ebook details the research and foundation of Gatyatmak Jyotish, through which accurate predictions are possible.</string>
+    <string name="service7">(c). Gatyatmak Jharokhe se jyotish – The ebook \'Gatyatmak Jharokhe Se Jyotish\' is written by Mrs. Sangita Puri in which dynamic form of astrology has been described well to make common people understand easily.</string>
 
     <string name="daily_cart">After receiving this service, the calendar of Daily result will be activated. then you will understand which day will remain good, bad or important for you for a whole year from today.</string>
     <!--<string name="service1">1. a English horoscope – 7 pages </string>-->
@@ -199,6 +199,10 @@
     <string name="resetPassword">Reset Password</string>
     <string name="enterOTP">Enter the OTP provided in the email</string>
     <string name="getOTP">Get OTP</string>
+    <string name="kindle_store">Go to kindle store</string>
+    <string name="share_on_cart_text">You can get discount of 50% by using gatyatmak point.</string>
+    <string name="share_on_cart"><u>Get gatyatmak point</u></string>
+
     <string-array name="subscription">
         <item>Daily Forcast - You will continually be shown your forecast for 3 days without any fee . In case If you wish to see your daily forecast for whole year at a time, you\'ll have to pay for our annual subscription for daily forecast \u20B9 400 Subscribe For Daily</item>
         <item>You can get offers up to 50% of the value on the basis of Gatyatmak points in your account. Get Gatyatmak Points .</item>
@@ -269,5 +273,11 @@
    </item>
     </string-array>
 
+
+    <string name="rate_dialog_title1">Rate this app</string>
+    <string name="rate_dialog_message1">If you enjoy using this app, would you mind taking a moment to rate it? It won\'t take more than a minute. Thanks for your support!</string>
+    <string name="rate_dialog_ok1">Rate It Now</string>
+    <string name="rate_dialog_cancel1">Remind Me Later</string>
+    <string name="rate_dialog_no1">No, Thanks</string>
 
 </resources>

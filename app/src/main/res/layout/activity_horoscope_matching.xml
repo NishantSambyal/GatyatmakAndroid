@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.codesgood.views.JustifiedTextView
+            <TextView
                 android:id="@+id/tv_Male"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.codesgood.views.JustifiedTextView
+            <TextView
                 android:id="@+id/tv_Female"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

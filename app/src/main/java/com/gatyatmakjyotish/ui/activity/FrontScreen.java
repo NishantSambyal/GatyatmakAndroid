@@ -13,9 +13,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -90,11 +92,18 @@ public class FrontScreen extends AppCompatActivity {
         //todo language selection at app startup code here
 
 
+//        LayoutInflater inflater = (LayoutInflater)this.getSystemService(LAYOUT_INFLATER_SERVICE);
+//        View dialogView = inflater.inflate(R.layout.layout_rate, (ViewGroup)findViewById(R.id.layout_root));
 
         AppRate.with(this)
+                .setTitle(getString(R.string.rate_dialog_title1))
+                .setMessage(getString(R.string.rate_dialog_message1))
+                .setTextRateNow(getString(R.string.rate_dialog_ok1))
+                .setTextLater(getString(R.string.rate_dialog_cancel1))
+                .setTextNever(getString(R.string.rate_dialog_no1))
                 .setInstallDays(0)
                 .setLaunchTimes(1)
-                .setRemindInterval(0)
+                .setRemindInterval(1)
                 .monitor();
         AppRate.showRateDialogIfMeetsConditions(this);
 

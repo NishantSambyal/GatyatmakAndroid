@@ -3,6 +3,9 @@ package com.gatyatmakjyotish.adapters;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,10 +27,13 @@ public class RemedyRecyclerAdpter extends RecyclerView.Adapter<RemedyRecyclerAdp
     private List<PublishModel> publishModelList=new ArrayList<>();
     private OnClickListener onClickListener;
     private Context context;
+    boolean isEBook = false;
+    String[] bookArr = {"https://amzn.to/31Aiyxd", "https://amzn.to/3rD9S3v", "https://amzn.to/3dtzCul"};
 
-    public RemedyRecyclerAdpter(List<PublishModel> strings, OnClickListener onClickListener) {
+    public RemedyRecyclerAdpter(List<PublishModel> strings, OnClickListener onClickListener, boolean isEBook) {
         this.onClickListener = onClickListener;
         this.publishModelList = strings;
+        this.isEBook = isEBook;
     }
 
     @NonNull
@@ -67,6 +73,18 @@ public class RemedyRecyclerAdpter extends RecyclerView.Adapter<RemedyRecyclerAdp
                 }
             });
         }
+
+        if (isEBook) {
+            viewHolder.tv_kindle_store.setVisibility(View.VISIBLE);
+        }
+
+        viewHolder.tv_kindle_store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(bookArr[i]));
+                context.startActivity(browserIntent);
+            }
+        });
     }
 
     @Override
@@ -77,12 +95,13 @@ public class RemedyRecyclerAdpter extends RecyclerView.Adapter<RemedyRecyclerAdp
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textView;
+        TextView textView,tv_kindle_store;
         CheckBox checkBox;
         ImageView book;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            tv_kindle_store = itemView.findViewById(R.id.tv_kindle_store);
             textView = itemView.findViewById(R.id.textview);
             checkBox = itemView.findViewById(R.id.checkbox);
             book = itemView.findViewById(R.id.book);

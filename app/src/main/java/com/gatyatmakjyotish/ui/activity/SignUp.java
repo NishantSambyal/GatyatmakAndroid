@@ -102,7 +102,7 @@ public class SignUp extends AppCompatActivity {
         et_Dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.setUpDatePicker(et_Dob, SignUp.this).show();
+                Util.setUpDatePickerDOB(et_Dob, SignUp.this).show();
             }
         });
 

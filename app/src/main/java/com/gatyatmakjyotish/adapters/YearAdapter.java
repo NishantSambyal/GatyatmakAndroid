@@ -38,6 +38,7 @@ public class YearAdapter extends RecyclerView.Adapter<YearAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         YearResult obj = resultCategoryList.get(i);
 
+        System.out.println("### Description-"+i+": "+obj.getDescription());
         if(obj.getFeeling().equalsIgnoreCase("Normal") || obj.getFeeling().equalsIgnoreCase("सामान्य"))
             viewHolder.feeling.setTextColor(Color.parseColor("#728FCE")); // Green
         else if(obj.getFeeling().equalsIgnoreCase("Positive") || obj.getFeeling().equalsIgnoreCase("सकारात्मक"))
@@ -48,7 +49,8 @@ public class YearAdapter extends RecyclerView.Adapter<YearAdapter.ViewHolder> {
         viewHolder.feeling.setText(obj.getFeeling());
         viewHolder.description.setMovementMethod(new ScrollingMovementMethod());
         viewHolder.feeling.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
-        viewHolder.description.setText(obj.getDescription());
+        String after = obj.getDescription().replaceAll("\\s{2,}", " ").trim();
+        viewHolder.description.setText(after);
         viewHolder.description.setTextSize(TypedValue.COMPLEX_UNIT_PX, SaveTextSize.getInstance(context).getTextSize());
     }
 

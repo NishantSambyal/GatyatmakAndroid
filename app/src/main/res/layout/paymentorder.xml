@@ -41,7 +41,7 @@
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ankit Verma"
+                        android:text=""
                         android:paddingLeft="10dp"
                         android:textStyle="bold"
                         android:textSize="15sp"/>
@@ -50,7 +50,7 @@
                         android:id="@+id/tv_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="erankitverma99@gmail.com"
+                        android:text=""
                         android:paddingLeft="10dp"
                         android:layout_below="@+id/tv_name"
                         android:paddingRight="10dp"
@@ -87,7 +87,7 @@
                         android:id="@+id/tv_gatyatmakpoints_amount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="40"
+                        android:text=""
                         android:layout_alignParentRight="true"
                         android:paddingRight="10dp"
                         android:textSize="15sp"/>
@@ -96,11 +96,24 @@
                         android:id="@+id/tv_gatyatmakpoints_heading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="You can get 50% of the gatyatmak points"
+                        android:text="@string/share_on_cart_text"
                         android:paddingRight="10dp"
                         android:paddingLeft="10dp"
                         android:layout_below="@+id/tv_gatyatmakpoints"
                         android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/tv_gatyatmakpoints_share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/share_on_cart"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:layout_below="@+id/tv_gatyatmakpoints_heading"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorAccent"
+                        />
+
 
 
                 </RelativeLayout>

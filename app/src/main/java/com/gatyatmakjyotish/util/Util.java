@@ -162,9 +162,31 @@ public class Util {
                 }catch (Exception e){}
             }
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
         return datePickerDialog;
 
     }
+    public static DatePickerDialog setUpDatePickerDOB(final EditText editText, Context context) {
+        final Calendar newCalendar = Calendar.getInstance();
+        final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                try {
+                    String sDOB = "" + year + "-" + appendZeroIf(month+1) + "-" + appendZeroIf(dayOfMonth);
+//                    Toast.makeText(context, sDOB, Toast.LENGTH_SHORT).show();
+                    editText.setText(sDOB);
+//                    editText.setText(dateFormatter.format(newCalendar.getTime()));
+                    newCalendar.set(year, month, dayOfMonth);
+                }catch (Exception e){}
+            }
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+
+        datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
+        return datePickerDialog;
+
+    }
+
 
     private static String appendZeroIf(int n){
         if (n <= 9){

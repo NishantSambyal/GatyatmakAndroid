@@ -78,6 +78,7 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.year_fragment, container, false);
+
         spinner = v.findViewById(R.id.spinner);
         recyclerViewYear = v.findViewById(R.id.recycler_view);
         yearAdapter = new YearAdapter(yearResultList, getActivity());
@@ -167,18 +168,12 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                                 //postnewcom(Api.YEAR_RESULT_API, getActivity());
 //                                postnewcom(Api.BASE_URL + "result" + "/" + user_id + "/" + yearCategoryList.get(position).getId(), getActivity());
                                 postnewcom(Api.BASE_URL + Api.RESULT + "/" + user_id + "/" + yearCategoryList.get(position).getId(), getActivity());
-
-
                             }
-
                             @Override
                             public void onNothingSelected(AdapterView<?> parentView) {
                                 // your code here
                             }
-
                         });
-
-
                     } else {
                         textView.setError(jsonObject.getString("message"));
                     }
@@ -200,6 +195,7 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                 params.put("language", languagePreference.getString("language", Constants.Language.ENGLISH.getLanguage()).
                         equals(Constants.Language.ENGLISH.getLanguage()) ? Constants.Language.ENGLISH.getLanguage() :
                         Constants.Language.HINDI.getLanguage());
+                System.out.println("### Dropdown Param: "+params.toString());
                 return params;
             }
         };
@@ -226,6 +222,7 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
 
 
     private void postnewcom(String url, final Context context) {
+        System.out.println("### PostURL: "+url);
         Util.showProgress(progressDialog = new ProgressDialog(getActivity()), "Loading...");
         RequestQueue queue = Volley.newRequestQueue(context);
 //        StringRequest sr = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -244,6 +241,9 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("object");
                     setIsPaid(jsonObject.getInt("is_paid"));
+                    if (jsonArray.length() > 1){
+                        count = 2;
+                    }
                     if (languagePreference.getString("language", Constants.Language.ENGLISH.getLanguage()).equals(Constants.Language.ENGLISH.getLanguage())) {
                         for (int i = 0; i < jsonArray.length(); i++) {
 
@@ -275,7 +275,6 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                                 resultCategory.setYearResults(yearResults1);
 
                                 resultCategoryList.add(resultCategory);
-
                             }
                             }catch (Exception e){}
                         }
@@ -359,7 +358,7 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
 
     }
 
-    int count;
+    int count = 1;
 
     public void data(final int resultCategoryListSize) {
 
@@ -533,13 +532,16 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
     public void getData(int count) {
 
         try {
+            if ((count-1) < 0){
+                return;
+            }
             date.setText(resultCategoryList.get(count-1).getDate() + "");
 
             yearResultList.clear();
 
 
             if (resultCategoryList.get(count-1).getYearResults().size() <= 0) {
-                textViewNoData.setVisibility(View.VISIBLE);
+                textViewNoData.setVisibility(View.GONE);
                 recyclerViewYear.setVisibility(View.GONE);
 
                 if (languagePreference.getString("language", Constants.Language.ENGLISH.getLanguage()).equals(Constants.Language.ENGLISH.getLanguage())) {
