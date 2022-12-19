@@ -34,7 +34,7 @@ public class Service extends Fragment {
     OnClickListener onClickListener;
     List<PublishModel> publishList;
     //int[] prices = {500, 1100, 500, 500, 500};
-    int[] prices = {800, 400, 400, 400};
+    int[] prices = {800, 800, 800, 800};
     SharedPreferences sharedPreferences;
     public static final String mypreference = "mypref";
 
@@ -59,7 +59,7 @@ public class Service extends Fragment {
         int title[] = {R.string.title_service1, R.string.title_service2, R.string.title_service3, R.string.title_service4};
         int description[] = {R.string.service1, R.string.service2, R.string.service3,R.string.service4};
         for (int i = 0; i < prices.length; i++) {
-            publishList.add(new PublishModel(description[i], null, false, title[i], prices[i]));
+            publishList.add(new PublishModel(description[i], null, false, title[i], prices[i], false));
         }
         getSavedSelection();
         return publishList;
@@ -83,5 +83,7 @@ public class Service extends Fragment {
             }
         }
     }
+
+
 
 }

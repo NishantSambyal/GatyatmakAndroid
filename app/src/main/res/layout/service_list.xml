@@ -11,18 +11,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <!--<TextView-->
-        <!--android:id="@+id/textview"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:fontFamily="@font/helvetica"-->
-        <!--android:gravity="center"-->
-        <!--android:lineSpacingExtra="2dp"-->
-        <!--android:padding="5dp"-->
-        <!--android:text="@string/service_title"-->
-        <!--android:textColor="@color/colorTextColor"-->
-        <!--android:textSize="15sp" />-->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         tools:listitem="@layout/row_service"

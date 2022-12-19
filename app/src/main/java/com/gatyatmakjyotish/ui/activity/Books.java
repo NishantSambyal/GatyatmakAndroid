@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.gatyatmakjyotish.ModelClass.PublishModel;
 import com.gatyatmakjyotish.OnClickListener;
@@ -47,7 +48,7 @@ public class Books extends AppCompatActivity implements OnClickListener {
     public String setService = "";
     int p = -1;
     public static Boolean publishStatus = false;
-
+    public static Boolean isHoroMatchChecked = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class Books extends AppCompatActivity implements OnClickListener {
         if (getIntent().getExtras().getString("Forecast") != null)
             forecast = getIntent().getExtras().getString("Forecast");
 
+        isHoroMatchChecked = sharedPreferences.getBoolean("is_horoscope_matching", false);
         if (sharedPreferences.getBoolean("dailyStatus", false) || sharedPreferences.getBoolean("yearlyStatus", false)) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("cart", "");
@@ -73,6 +75,7 @@ public class Books extends AppCompatActivity implements OnClickListener {
             editor.putBoolean("yearlyStatus", false);
             editor.commit();
         }
+
 
 
         if (getIntent().getExtras().getString("Service") != null)
@@ -91,17 +94,18 @@ public class Books extends AppCompatActivity implements OnClickListener {
             Util.setupToolbar(this, toolbar, getString(R.string.publish));
             p = 0;
         }
-        setUpViewPager(viewPager);
         button = findViewById(R.id.button);
+        setUpViewPager(viewPager);
         getFreshCartItems();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isHoroMatchChecked = sharedPreferences.getBoolean("is_horoscope_matching", false);
+                System.out.println("### isHoroMatchChecked: "+isHoroMatchChecked);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.clear();
                 editor.commit();
-
 
                 if (publishModelList.size() == 0) {
                     Util.showDialog(Books.this, "Service Not Selected", "Please select at least one service.", false, new DialogInterface.OnClickListener() {
@@ -114,35 +118,32 @@ public class Books extends AppCompatActivity implements OnClickListener {
                     editor.putString("cart", new Gson().toJson(publishModelList));
                     editor.commit();
 
-                    if(publishModelList.get(0).getTitle()!=R.string.title_service2)
-                    {
+                    if(publishModelList.get(0).getTitle()!=R.string.title_service2){
                         p= 0;
                     }
-
-
-                    if(p==0)
-                    {
+                    if(p==0 && isHoroMatchChecked == false){
                         Intent intent = new Intent(Books.this, Cart.class);
                         intent.putExtra("proceedWith", p);
                         startActivity(intent);
                         finish();
                     }
-                    else
-                    {
+                    else{
                         Intent intent = new Intent(Books.this, CompareKundali.class);
                         intent.putExtra("Service", "CompareKundali");
                         intent.putExtra("proceedWith", p);
                         startActivity(intent);
                     }
-
-
-
-//
-
                 }
             }
         });
         viewPager.setOffscreenPageLimit(2);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        setUpViewPager(viewPager);
+//        getFreshCartItems();
     }
 
     @Override
@@ -176,11 +177,11 @@ public class Books extends AppCompatActivity implements OnClickListener {
                     if (sharedPreferences.getBoolean("yearlyStatus", false)) {
                         if (!sharedPreferences.getBoolean("dailyStatus", false)) {
                             publishList = new Gson().fromJson(sharedPreferences.getString("cart", ""), type);
-                            publishList.add(new PublishModel(description[0], 22332, true, title[0], 400));
+                            publishList.add(new PublishModel(description[0], 22332, true, title[0], 400, false));
                         }
                     } else {
                         editor.putString("cart", "");
-                        publishList.add(new PublishModel(description[0], 22332, true, title[0], 400));
+                        publishList.add(new PublishModel(description[0], 22332, true, title[0], 400, false));
                     }
 
                     dailyStatus = true;
@@ -207,11 +208,11 @@ public class Books extends AppCompatActivity implements OnClickListener {
                             Type type = new TypeToken<List<PublishModel>>() {
                             }.getType();
                             publishList = new Gson().fromJson(sharedPreferences.getString("cart", ""), type);
-                            publishList.add(new PublishModel(description[0], 22332, true, title[0], 400));
+                            publishList.add(new PublishModel(description[0], 22332, true, title[0], 400, false));
                         }
                     } else {
                         editor.putString("cart", "");
-                        publishList.add(new PublishModel(description[0], 22332, true, title[0], 400));
+                        publishList.add(new PublishModel(description[0], 22332, true, title[0], 400, false));
                     }
 
                     yearlyStatus = true;
@@ -303,4 +304,7 @@ public class Books extends AppCompatActivity implements OnClickListener {
         onBackPressed();
         return true;
     }
+
+
+
 }

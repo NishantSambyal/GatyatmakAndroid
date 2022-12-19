@@ -74,7 +74,7 @@ public class Publish extends Fragment {
         int[] prices = {400, 400};
 
         for (int i = 0; i < images.length; i++) {
-            publishList.add(new PublishModel(description[i], images[i], false, title[i], prices[i]));
+            publishList.add(new PublishModel(description[i], images[i], false, title[i], prices[i], false));
         }
         getSavedSelection();
         return publishList;
@@ -90,7 +90,7 @@ public class Publish extends Fragment {
         int[] prices = {200, 200, 200};
 
         for (int i = 0; i < images.length; i++) {
-            publishList.add(new PublishModel(description[i], images[i], false, title[i], prices[i]));
+            publishList.add(new PublishModel(description[i], images[i], false, title[i], prices[i], false));
         }
         getSavedSelection();
         return publishList;

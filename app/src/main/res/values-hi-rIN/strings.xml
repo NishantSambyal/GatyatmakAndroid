@@ -298,6 +298,8 @@ l</string>
     <string name="rate_dialog_ok1">अब रेट लगाएँ</string>
     <string name="rate_dialog_cancel1">मुझे बाद में याद दिलाना</string>
     <string name="rate_dialog_no1">जी नहीं, धन्यवाद</string>
+    <string name="default_time_msg">क्या निश्चित तौर पर आपका जन्म समय 12 am (रात के 12 बजे) का है ?</string>
+    <string name="default_date_msg">क्या आपका जन्म निश्चित तौर पर 1 जनवरी 1970 को हुआ है?</string>
 
 
 </resources>

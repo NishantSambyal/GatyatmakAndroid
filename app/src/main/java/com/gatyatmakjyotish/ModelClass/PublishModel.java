@@ -6,15 +6,18 @@ public class PublishModel {
     private int image;
     private int price;
     private Boolean value;
+    private Boolean isChecked;
 
 
-    public PublishModel(Integer publish, Integer image, Boolean value, int title, int price ) {
+
+    public PublishModel(Integer publish, Integer image, Boolean value, int title, int price, Boolean isChecked ) {
         this.publish = publish;
         if (image != null)
             this.image = image;
         this.value = value;
         this.title = title;
         this.price = price;
+        this.isChecked = isChecked;
     }
 
 
@@ -42,5 +45,13 @@ public class PublishModel {
 
     public int getPrice() {
         return price;
+    }
+
+    public Boolean getChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(Boolean checked) {
+        isChecked = checked;
     }
 }

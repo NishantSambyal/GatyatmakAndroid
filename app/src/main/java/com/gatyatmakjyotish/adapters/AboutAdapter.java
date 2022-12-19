@@ -138,12 +138,12 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
                         if(!sharedPreferences.getBoolean("yearlyStatus",false)){
                             Type type = new TypeToken<List<PublishModel>>() {}.getType();
                             publishList = new Gson().fromJson(sharedPreferences.getString("cart", ""), type);
-                            publishList.add(new PublishModel(description[0],22332,true,title[0],400));
+                            publishList.add(new PublishModel(description[0],22332,true,title[0],400, false));
                         }
                     }
                     else{
                         editor.putString("cart", "");
-                        publishList.add(new PublishModel(description[0],22332,true,title[0],400));
+                        publishList.add(new PublishModel(description[0],22332,true,title[0],400, false));
                     }
 
                     yearlyStatus = true;
@@ -190,12 +190,12 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> 
                     if(sharedPreferences.getBoolean("yearlyStatus",false)){
                             if(!sharedPreferences.getBoolean("dailyStatus",false)){
                                 publishList = new Gson().fromJson(sharedPreferences.getString("cart", ""), type);
-                                publishList.add(new PublishModel(description[0],22332,true,title[0],400));
+                                publishList.add(new PublishModel(description[0],22332,true,title[0],400, false));
                             }
                     }
                     else{
                         editor.putString("cart", "");
-                        publishList.add(new PublishModel(description[0],22332,true,title[0],400));
+                        publishList.add(new PublishModel(description[0],22332,true,title[0],400, false));
                     }
 
                     dailyStatus = true;

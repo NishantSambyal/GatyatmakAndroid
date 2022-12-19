@@ -279,5 +279,8 @@
     <string name="rate_dialog_ok1">Rate It Now</string>
     <string name="rate_dialog_cancel1">Remind Me Later</string>
     <string name="rate_dialog_no1">No, Thanks</string>
+    <string name="default_time_msg">Are you sure your time of birth is 12 am (12 o\'clock at night) ?</string>
+    <string name="default_date_msg">Are you sure your date of birth is 1st January 1970 ?</string>
+
 
 </resources>

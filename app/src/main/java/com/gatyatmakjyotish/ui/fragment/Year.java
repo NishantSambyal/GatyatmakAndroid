@@ -439,6 +439,8 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                         parse(currentDate).equals(new SimpleDateFormat("yyyy-MM-dd").
                         parse(resultCategoryList.get(i).getTodate()))) {
                     System.out.println("date check done");
+                    System.out.println("### count-1.1");
+
                     count = i;
                     tempFlag = true;
                     break;
@@ -449,7 +451,8 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                         parse(currentDate).before(new SimpleDateFormat("yyyy-MM-dd").
                         parse(resultCategoryList.get(i).getTodate()))) {
 
-                    count = i;
+                    System.out.println("### count-1.2");
+                    count = i+1;
                     tempFlag = true;
 
                     System.out.println(new SimpleDateFormat("yyyy-MM-dd").parse(currentDate)
@@ -463,6 +466,7 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                 } else {
                     if (add < resultCategoryList.size() - 1 && !tempFlag) {
                         getCount2();
+                        System.out.println("### count-1.3");
                     }
                 }
             }
@@ -498,6 +502,7 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                     count = q;
                     tempFlag = true;
                     System.out.println("from date 1" + resultCategoryList.get(q).getTodate());
+                    System.out.println("### count-2.1");
                     break;
 
                 } else if (new SimpleDateFormat("yyyy-MM-dd").parse(currentDate2).
@@ -507,7 +512,8 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                         parse(currentDate2).before(new SimpleDateFormat("yyyy-MM-dd").
                         parse(resultCategoryList.get(q).getTodate()))) {
 
-                    count = q;
+                    System.out.println("### count-2.2");
+                    count = q+1;
                     tempFlag = true;
 
                     System.out.println(new SimpleDateFormat("yyyy-MM-dd").parse(currentDate2)
@@ -520,6 +526,7 @@ public class Year extends Fragment implements AdapterView.OnItemSelectedListener
                     break;
                 } else {
                     System.out.println("date else ");
+                    System.out.println("### count-2.3");
                 }
             }
         } catch (Exception e) {

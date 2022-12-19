@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
@@ -163,11 +164,28 @@ public class CompareKundali extends AppCompatActivity {
         btn_SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                submitDetail();
+//                if (isValid()) {
+                    submitDetail();
+//                }
             }
         });
 
     }
+
+    private boolean isValid(){
+
+        if (TextUtils.isEmpty(et_Name.getText())||TextUtils.isEmpty(et_fName.getText())
+                ||TextUtils.isEmpty(et_fPob.getText())||TextUtils.isEmpty(et_Pob.getText())
+                ||TextUtils.isEmpty(et_Dob.getText())||TextUtils.isEmpty(et_Tob.getText())
+                ||TextUtils.isEmpty(et_fDob.getText())||TextUtils.isEmpty(et_fTob.getText())){
+            Toast.makeText(context, "All field are mandatory", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

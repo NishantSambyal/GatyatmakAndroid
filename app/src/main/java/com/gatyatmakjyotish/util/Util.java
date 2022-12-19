@@ -71,6 +71,7 @@ public class Util {
                     public void onTimeSet(TimePicker view, int hourOfDay,
                                           int minute) {
                         String AM_PM = " AM";
+                        String hh_precede = "";
                         String mm_precede = "";
                         if (hourOfDay >= 12) {
                             AM_PM = " PM";
@@ -83,10 +84,14 @@ public class Util {
                         } else if (hourOfDay == 0) {
                             hourOfDay = 12;
                         }
+                        if (hourOfDay < 10) {
+                            hh_precede = "0";
+                        }
                         if (minute < 10) {
                             mm_precede = "0";
                         }
-                        editText.setText("" + hourOfDay + ":" + mm_precede + minute + AM_PM);
+
+                        editText.setText("" + hh_precede + hourOfDay + ":" + mm_precede + minute + AM_PM);
 //                        String status = "AM";
 //                        if(hourOfDay > 11){
 //                            status="PM";

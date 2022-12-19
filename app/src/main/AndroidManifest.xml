@@ -23,9 +23,10 @@
         >
 
         <activity android:name="com.gatyatmakjyotish.ui.activity.WaitingForLetter"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity android:name="com.gatyatmakjyotish.ui.activity.SplashActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -124,7 +125,8 @@
             android:value="rzp_test_sEFlSto281GZCY" />
 
         <service
-            android:name="com.gatyatmakjyotish.Services.MyFirebaseIdSevice">
+            android:name="com.gatyatmakjyotish.Services.MyFirebaseIdSevice"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
@@ -132,7 +134,7 @@
 
         <service
             android:name="com.gatyatmakjyotish.Services.MyFirebaseMessagingService"
-           >
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

@@ -236,60 +236,97 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Please wait...");
         progressDialog.show();
-        System.out.println("euyueryyuyuyuryeryeryureyu " +email);
-        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-        StringRequest sr = new StringRequest(Request.Method.POST, Api.FORGOTPASSWORD_API, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if (progressDialog != null && progressDialog.isShowing())
-                    builder.dismiss();
-                // Toast.makeText(MainActivity.this, "Password reset mail is sent to your mail", Toast.LENGTH_SHORT).show();
+        System.out.println("### email " +email + ' ' + Api.FORGOTPASSWORD_API);
 
-                progressDialog.dismiss();
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    if (jsonObject.optBoolean("status")) {
-//                        Toast.makeText(MainActivity.this, "" + jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+        AndroidNetworking.post(Api.FORGOTPASSWORD_API)
+                .addBodyParameter("email", email.trim())
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        System.out.println("### Forgot " +response.toString());
+                        if (progressDialog != null && progressDialog.isShowing())
+                            builder.dismiss();
+                        progressDialog.dismiss();
+                        try {
+                            if (response.optBoolean("status")) {
+//                        Toast.makeText(MainActivity.this, "" + response.optString("message"), Toast.LENGTH_SHORT).show();
+                            }
+                            builder.dismiss();
+                            //Toast.makeText(MainActivity.this, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        Log.e("response: ", response.toString());
+                        builder.dismiss();
+
+                        //  Toast.makeText(MainActivity.this, "Password reset mail is sent to your email", Toast.LENGTH_SHORT).show();
+                        alertdialog();
+                        progressDialog.dismiss();
                     }
-                    builder.dismiss();
-                    //Toast.makeText(MainActivity.this, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                Log.e("response: ", response.toString());
-                builder.dismiss();
 
-              //  Toast.makeText(MainActivity.this, "Password reset mail is sent to your email", Toast.LENGTH_SHORT).show();
-                alertdialog();
-                progressDialog.dismiss();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (progressDialog != null && progressDialog.isShowing())
-                    builder.dismiss();
-                Toast.makeText(MainActivity.this, "Request Failed!!", Toast.LENGTH_SHORT).show();
-//                  alertdialog();
-                // Toast.makeText(MainActivity.this, ""+, Toast.LENGTH_SHORT).show();
-                System.out.println("error "+error.getMessage());
-                progressDialog.dismiss();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("email", email.trim());
-                return params;
+                    @Override
+                    public void onError(ANError anError) {
+                        if (progressDialog != null && progressDialog.isShowing())
+                            builder.dismiss();
+                        Toast.makeText(MainActivity.this, "Request Failed!!", Toast.LENGTH_SHORT).show();
+                        System.out.println("error "+anError.getMessage());
+                        progressDialog.dismiss();
+                    }
+                });
 
-            }
+//        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+//        StringRequest sr = new StringRequest(Request.Method.POST, Api.FORGOTPASSWORD_API, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                if (progressDialog != null && progressDialog.isShowing())
+//                    builder.dismiss();
+//                progressDialog.dismiss();
+//                try {
+//                    JSONObject jsonObject = new JSONObject(response);
+//                    if (jsonObject.optBoolean("status")) {
+////                        Toast.makeText(MainActivity.this, "" + jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+//                    }
+//                    builder.dismiss();
+//                    //Toast.makeText(MainActivity.this, jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//                Log.e("response: ", response.toString());
+//                builder.dismiss();
+//
+//              //  Toast.makeText(MainActivity.this, "Password reset mail is sent to your email", Toast.LENGTH_SHORT).show();
+//                alertdialog();
+//                progressDialog.dismiss();
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                if (progressDialog != null && progressDialog.isShowing())
+//                    builder.dismiss();
+//                Toast.makeText(MainActivity.this, "Request Failed!!", Toast.LENGTH_SHORT).show();
+//                System.out.println("error "+error.getMessage());
+//                progressDialog.dismiss();
+//            }
+//        }) {
+//            @Override
+//            protected Map<String, String> getParams() {
+//                Map<String, String> params = new HashMap<String, String>();
+//                params.put("email", email.trim());
+//                return params;
+//
+//            }
+//
+//        };
+//        sr.setRetryPolicy(new DefaultRetryPolicy(
+//                30000,
+//                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+//                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+//
+//        queue.add(sr);
 
-        };
-        sr.setRetryPolicy(new DefaultRetryPolicy(
-                30000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-        queue.add(sr);
     }
 
 
@@ -299,7 +336,6 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setMessage("Please wait...");
         progressDialog.show();
 
-
         AndroidNetworking.post(Api.LOGIN_API)
                 .addBodyParameter("email", emailStr)
                 .addBodyParameter("password", passwordStr)
@@ -308,6 +344,7 @@ public class MainActivity extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject jsonObject) {
+                        System.out.println("### Login Resp: "+jsonObject.toString());
                         progressDialog.dismiss();
                         try {
                             boolean status = jsonObject.getBoolean("status");

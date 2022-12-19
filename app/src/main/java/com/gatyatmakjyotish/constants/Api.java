@@ -2,8 +2,9 @@ package com.gatyatmakjyotish.constants;
 
 
 public class Api {
-    public static final String BASE_URL = "http://vivahmanglam.com/astro/api/";
-//    public static final String BASE_URL = "http://astro.nuagedigitech.com/api/";
+//    public static final String BASE_URL = "http://vivahmanglam.com/astro/api/";
+//public static final String BASE_URL = "http://astro.nuagedigitech.com/api/";
+    public static final String BASE_URL = "http://gatyatmakjyotish.co.in/api/";
 //    public static final String BASE_URL = "http://nuagedigitech.com/astro_test/api/";
     public static final String USER = "user/";
     public static final String CHANGE_PASSWORD = "/change-password";
@@ -17,7 +18,8 @@ public class Api {
     public static String DATE_API = BASE_URL + "daily-result?user_id=1&result_date=2019-06-25";
     public static String USER_ID = "";
     public static String PAYMENT_API = BASE_URL + "payment";
-    public static String PAYMENT_FAILED_API = "http://nuagedigitech.com/astro/api/paymentfailed";
+//    public static String PAYMENT_FAILED_API = "http://nuagedigitech.com/astro/api/paymentfailed";
+    public static String PAYMENT_FAILED_API = "http://gatyatmakjyotish.co.in/api/paymentfailed";
     public static String ORDER_API = BASE_URL + "order";
     public static String UPDATE_API = "";
     public static String CHANGEPASSWORD_API = "";
